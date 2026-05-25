@@ -1,7 +1,0 @@
-GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-part3,endes.gestpedidos,Client,0,41,0,0,0,15,0,8,0,8
-part3,endes.gestpedidos,Main,8,107,1,1,4,26,3,1,2,1
-part3,endes.gestpedidos,Product,3,38,0,2,1,12,1,7,1,6
-part3,endes.gestpedidos,DigitalProd,0,38,0,0,0,12,0,7,0,7
-part3,endes.gestpedidos,Order,0,117,0,6,0,21,0,8,0,5
-part3,endes.gestpedidos,PhysicalProd,0,27,0,0,0,8,0,5,0,5
