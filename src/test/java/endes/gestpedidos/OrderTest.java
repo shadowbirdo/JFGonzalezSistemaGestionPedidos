@@ -17,8 +17,8 @@ class OrderTest {
     })
     void testCalcTotalParameterized(float expected, float p1, float p2) {
         Order order = new Order(new Client("Test", "test@test.es", "Calle"));
-        order.addProduct(new PhysicalProd("P1", p1, 0));
-        order.addProduct(new DigitalProd("P2", p2));
+        order.addProduct(new PhysicalProd(1,"P1", p1, 0));
+        order.addProduct(new DigitalProd(2,"P2", p2));
 
         float total = order.calcTotal();
 
@@ -40,7 +40,7 @@ class OrderTest {
     @ValueSource(floats = {50.0f, 60.0f, 0.0f, -59.5f})
     void testCalcTotalIncorrectValues(float incorrectValue) {
         Order order = new Order(new Client("Test", "test@test.es", "Calle"));
-        order.addProduct(new PhysicalProd("P1", 59.5f, 0)); // Total real 59.5
+        order.addProduct(new PhysicalProd(1,"P1", 59.5f, 0)); // Total real 59.5
         
         float total = order.calcTotal();
 
@@ -52,7 +52,7 @@ class OrderTest {
     void testShowSummary() {
         Client client = new Client("Homer", "homer@test.es", "Evergreen");
         Order order = new Order(client);
-        order.addProduct(new PhysicalProd("Duff", 10.0f, 2.0f));
+        order.addProduct(new PhysicalProd(1,"Duff", 10.0f, 2.0f));
 
         String summary = order.showSummary();
 

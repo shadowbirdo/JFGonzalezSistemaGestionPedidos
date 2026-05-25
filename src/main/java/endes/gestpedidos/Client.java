@@ -1,7 +1,16 @@
 package endes.gestpedidos;
 
+/**
+ * - Atributos: id, nombre, añosAntiguedad (int), esVip (boolean), pais.
+ * - Los años de antigüedad y el estado VIP determinarán el porcentaje de descuento de fidelidad que la Tienda aplicará sobre el total del Pedido.
+ * - El país indicará el gasto de envío que haya que aplicar en los casos correspondientes.
+ */
 public class Client {
+    private int id;
     private String name;
+    private int seniorityYears;
+    private boolean esVip;
+    private String pais;
     private String mail;
     private String address;
 

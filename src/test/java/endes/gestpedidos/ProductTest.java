@@ -12,7 +12,7 @@ class ProductTest {
     @Test
     @DisplayName("CP-01: DigitalProd debe aplicar un 5% de descuento")
     void testDigitalProdCalcPrice() {
-        DigitalProd digitalProduct = new DigitalProd("Video Topo", 10.0f, "Pro", 500.0f);
+        DigitalProd digitalProduct = new DigitalProd(1,"Video Topo", 10.0f, "Pro", 500.0f);
 
         float finalPrice = digitalProduct.calcPrice();
 
@@ -22,7 +22,7 @@ class ProductTest {
     @Test
     @DisplayName("CP-02: PhysicalProd debe sumar el coste de envío al precio base")
     void testPhysicalProdCalcPrice() {
-        PhysicalProd physicalProduct = new PhysicalProd("Detergente", 20.0f, 10.0f);
+        PhysicalProd physicalProduct = new PhysicalProd(1,"Detergente", 20.0f, 10.0f);
 
         float finalPrice = physicalProduct.calcPrice();
 
@@ -34,7 +34,7 @@ class ProductTest {
     void testNegativePriceThrowsException() {
         assertThrows(IllegalArgumentException.class, () -> {
             
-            new PhysicalProd("Error Product", -5.0f, 10.0f);
+            new PhysicalProd(1,"Error Product", -5.0f, 10.0f);
             
         }, "Debería lanzar IllegalArgumentException al intentar poner un precio negativo");
     }
@@ -42,7 +42,7 @@ class ProductTest {
     @Test
     @DisplayName("CP-08: El precio de un producto digital NO equivale a su precio base")
     void testDigitalPriceNotEqualsBase() {
-        DigitalProd digitalProduct = new DigitalProd("Video", 50.0f, "Lic", 10.0f);
+        DigitalProd digitalProduct = new DigitalProd(1,"Video", 50.0f, "Lic", 10.0f);
         float finalPrice = digitalProduct.calcPrice();
         assertNotEquals(50.0f, finalPrice, "El precio final con descuento no debe ser igual al precio bruto");
     }
@@ -50,7 +50,7 @@ class ProductTest {
     @Test
     @DisplayName("CP-09: El precio de un producto físico NO equivale a su precio base")
     void testPhysicalPriceNotEqualsBase() {
-        PhysicalProd physicalProduct = new PhysicalProd("Detergente", 100.0f, 5.0f);
+        PhysicalProd physicalProduct = new PhysicalProd(1,"Detergente", 100.0f, 5.0f);
         float finalPrice = physicalProduct.calcPrice();
         assertNotEquals(100.0f, finalPrice, "El precio final debe incluir el envío, no ser igual al base");
     }
@@ -58,17 +58,15 @@ class ProductTest {
     @Test
     @DisplayName("Test de cobertura para setters, getters y toString")
     void testProductCoverage() {
-        PhysicalProd p = new PhysicalProd("Duff", 10.0f, 2.0f);
+        PhysicalProd p = new PhysicalProd(1,"Duff", 10.0f, 2.0f);
         p.setName("Duff Premium");
         p.setPrice(12.0f);
-        p.setDeliveryFee(3.0f);
         
         assertEquals("Duff Premium", p.getName());
         assertEquals(12.0f, p.getPrice());
-        assertEquals(3.0f, p.getDeliveryFee());
         assertNotNull(p.toString());
         
-        DigitalProd d = new DigitalProd("Video", 5.0f, "Lic", 100.0f);
+        DigitalProd d = new DigitalProd(2,"Video", 5.0f, "Lic", 100.0f);
         d.setLicense("Premium");
         d.setSizeInMb(200.0f);
         

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Main.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Sistema de Gestión de Pedidos</a> &gt; <a href="index.source.html" class="el_package">endes.gestpedidos</a> &gt; <span class="el_source">Main.java</span></div><h1>Main.java</h1><pre class="source lang-java linenums">package endes.gestpedidos;
+
+<span class="nc" id="L3">public class Main {</span>
+    public static void main(String[] args) {
+<span class="nc" id="L5">        executeLogic();</span>
+<span class="nc" id="L6">    }</span>
+
+    public static void executeLogic() {
+<span class="fc" id="L9">        final String hBar =  &quot;----------------------------------------\n&quot;;</span>
+<span class="fc" id="L10">        String outputMsg = &quot;&quot;;</span>
+
+<span class="fc" id="L12">        outputMsg += hBar;</span>
+<span class="fc" id="L13">        outputMsg += &quot;      TEST SISTEMA: EL BADULAQUE        \n&quot;;</span>
+<span class="fc" id="L14">        outputMsg += hBar;</span>
+
+        // 1. Cliente
+<span class="fc" id="L17">        Client homer = new Client(</span>
+            &quot;Homer J. Simpson&quot;, 
+            &quot;amanterechoncho@aol.com@aol.com&quot;, 
+            &quot;742 de Evergreen Terrace&quot;
+        );
+        
+<span class="fc" id="L23">        outputMsg += &quot;Cliente:\n&quot; + homer.getName() + &quot;\n&quot;;</span>
+
+        
+        // 2. Productos
+<span class="fc" id="L27">        PhysicalProd mrKroket = new PhysicalProd(&quot;Detergente Mr. Kroket&quot;, 20.0f, 10.0f);</span>
+<span class="fc" id="L28">        DigitalProd videoTopo = new DigitalProd(&quot;Balonazo en la entrepierna - Director's Cut&quot;, 10.0f, &quot;Licencia Hans Topo&quot;, 500.0f);</span>
+<span class="fc" id="L29">        PhysicalProd duff = new PhysicalProd(&quot;Duff (Pack divisible)&quot;, 12.0f, 2.0f); </span>
+<span class="fc" id="L30">        PhysicalProd donut = new PhysicalProd(&quot;Donut Prohibido&quot;, 5.0f, 1.0f);</span>
+
+        // 3. Pedido
+<span class="fc" id="L33">        Order order = new Order(homer);</span>
+        
+<span class="fc" id="L35">        order.addProduct(mrKroket);</span>
+<span class="fc" id="L36">        order.addProduct(videoTopo);</span>
+<span class="fc" id="L37">        order.addProduct(duff);</span>
+<span class="fc" id="L38">        order.addProduct(donut);</span>
+
+<span class="fc" id="L40">        outputMsg += &quot;Productos añadidos...\n&quot;;</span>
+
+        // 4. Resultados
+<span class="fc" id="L43">        outputMsg += hBar;</span>
+<span class="fc" id="L44">        outputMsg += order.showSummary() + &quot;\n&quot;;</span>
+<span class="fc" id="L45">        outputMsg += hBar;</span>
+
+        // Verificación del resultado
+        // 30 (Kroket) + 9.5 (Video) + 14 (Duff) + 6 (Donut) = 60
+<span class="fc" id="L49">        float total = order.calcTotal();</span>
+<span class="fc" id="L50">        outputMsg += &quot;Total calculado: &quot; + total + &quot;\n\n&quot;;</span>
+        
+<span class="pc bpc" id="L52" title="1 of 2 branches missed.">        if(total == 59.5f) outputMsg += &quot;&gt;&gt; ¡Mosquis! Todo correcto.&quot;;</span>
+<span class="nc" id="L53">        else outputMsg += &quot;&gt;&gt; Multiplícate por cero (Error).&quot;;</span>
+
+<span class="fc" id="L55">        outputMsg += &quot;\n&quot;;</span>
+
+<span class="fc" id="L57">        System.out.println(outputMsg);</span>
+<span class="fc" id="L58">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

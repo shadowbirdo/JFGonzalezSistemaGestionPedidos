@@ -3,6 +3,12 @@ package endes.gestpedidos;
 import java.util.List;
 import java.util.ArrayList;
 
+/**
+ * - Atributos: idPedido, Cliente, Lista de Productos, cantidades.
+ * - Método calcularTotal(): Debe sumar el precio de todos los productos (con IVA aplicado) y sumar los gastos de envío.
+ * - No se puede procesar un pedido si la lista de productos está vacía (lanzar excepción).
+ * - Debe permitir añadir o eliminar productos dinámicamente antes del cálculo final.
+ */
 public class Order {
     
     /**
@@ -16,8 +22,11 @@ public class Order {
      * ○​ Coste de envío para productos físicos.
      */
 
+    private int id;
     private Client client;
     private List<Product> products;
+    private List<Integer> cantidades;
+
     
     public Order(Client client){
         this(client, new ArrayList<>());

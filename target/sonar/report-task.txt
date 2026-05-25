@@ -1,0 +1,6 @@
+projectKey=JFGonzalezSistemaGestionPedidos
+serverUrl=http://localhost:9000
+serverVersion=26.3.0.120487
+dashboardUrl=http://localhost:9000/dashboard?id=JFGonzalezSistemaGestionPedidos
+ceTaskId=a9419a39-40f0-48f6-9b40-fdedfb69e466
+ceTaskUrl=http://localhost:9000/api/ce/task?id=a9419a39-40f0-48f6-9b40-fdedfb69e466

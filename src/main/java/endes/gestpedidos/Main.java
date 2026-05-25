@@ -24,10 +24,10 @@ public class Main {
 
         
         // 2. Productos
-        PhysicalProd mrKroket = new PhysicalProd("Detergente Mr. Kroket", 20.0f, 10.0f);
-        DigitalProd videoTopo = new DigitalProd("Balonazo en la entrepierna - Director's Cut", 10.0f, "Licencia Hans Topo", 500.0f);
-        PhysicalProd duff = new PhysicalProd("Duff (Pack divisible)", 12.0f, 2.0f); 
-        PhysicalProd donut = new PhysicalProd("Donut Prohibido", 5.0f, 1.0f);
+        PhysicalProd mrKroket = new PhysicalProd(1,"Detergente Mr. Kroket", 20.0f, 10.0f);
+        DigitalProd videoTopo = new DigitalProd(2,"Balonazo en la entrepierna - Director's Cut", 10.0f, "Licencia Hans Topo", 500.0f);
+        PhysicalProd duff = new PhysicalProd(3,"Duff (Pack divisible)", 12.0f, 2.0f); 
+        PhysicalProd donut = new PhysicalProd(4,"Donut Prohibido", 5.0f, 1.0f);
 
         // 3. Pedido
         Order order = new Order(homer);
