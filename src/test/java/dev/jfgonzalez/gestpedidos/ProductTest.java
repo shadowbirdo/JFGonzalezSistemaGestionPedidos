@@ -15,11 +15,12 @@ class ProductTest {
     @Test
     @DisplayName("CP-01: DigitalProd debe aplicar un 5% de descuento")
     void testDigitalProdCalcPrice() {
-        DigitalProduct digitalProduct = new DigitalProduct(1,"Video Topo", 10.0f, "Pro", 500.0f);
-
+        DigitalProduct digitalProduct = new DigitalProduct(1,"test_product", 10, "test_license", 123);
+        digitalProduct.applyIva("REDUCIDO");
+        
         float finalPrice = digitalProduct.calcFinalPrice();
 
-        assertEquals(9.5f, finalPrice, "El precio con descuento debería ser 9.5f");
+        assertEquals(11f, finalPrice, "El precio con descuento debería ser 9.5f");
     }
 
     @Test

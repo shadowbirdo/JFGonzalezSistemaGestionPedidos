@@ -18,7 +18,7 @@ public class DigitalProduct extends Product{
         super(id, name, price);
         this.license = license;
         this.sizeInMB = sizeInMB;
-        this.ivaMult = 1f;
+        this.ivaMult = 1;
     }
 
     public String getLicense() {return license;}

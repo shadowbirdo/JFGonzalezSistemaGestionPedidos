@@ -1,8 +1,9 @@
 package dev.jfgonzalez.gestpedidos.model;
 
 import java.util.List;
+import com.jakewharton.picnic.*;
 
-import de.vandermeer.asciitable.AsciiTable;
+
 
 import java.util.ArrayList;
 
@@ -13,18 +14,14 @@ import java.util.ArrayList;
  * - Debe permitir añadir o eliminar productos dinámicamente antes del cálculo final.
  */
 public class Order {
-    
+
     /**
      * Gestionar pedidos, donde cada pedido está asociado a un cliente y puede contener
      * uno o varios productos (usa agregación o composición).
-     */
-
-    /**
      * Calcular el importe total del pedido, teniendo en cuenta, por ejemplo:
      * ○​ IVA o descuentos para productos digitales.
      * ○​ Coste de envío para productos físicos.
      */
-
     private int id;
     private Customer customer;
     private String status; // Pending, Delivered, Canceled
@@ -78,9 +75,9 @@ public class Order {
          * ○​ Productos comprados.
          * ○​ Importe total.
          */
-
         StringBuilder summary = new StringBuilder();
         summary.append("Client data\n");
+        summary.append("%d - %s - %s".formatted(this.id, this.customer, this.status));
 
         summary.append(buildProductTable());
 
@@ -89,16 +86,38 @@ public class Order {
         return summary.toString();
     }
 
-    private String buildProductTable(){
-        AsciiTable productTable = new AsciiTable();
-        productTable.addRule();
-        productTable.addRow("Product","Amount");
-        productTable.addHeavyRule();
-        for(int i=0; i < productList.size(); i++){
+    private String buildProductTable() {
+        CellStyle cellStyle = new CellStyle.Builder()
+            .setBorder(true)
+            .build();
+        
+        TableSection header = new TableSection.Builder()
+            .addRow(new Row.Builder()
+                .addCell(new Cell.Builder("Product").build())
+                .addCell(new Cell.Builder("Amount").build())
+                .build()
+            ).build();
+
+        TableSection.Builder bodyBuilder = new TableSection.Builder();
+        for (int i = 0; i < productList.size(); i++) {
             Product product = this.productList.get(i);
             int amount = this.amountList.get(i);
-            productTable.addRow(product.getName(), amount);
+            
+            bodyBuilder.addRow(new Row.Builder()
+                .addCell(new Cell.Builder(product.getName()).build())
+                .addCell(new Cell.Builder(String.valueOf(amount)).build())
+                .build()
+            );
         }
-        return productTable.toString();
+        TableSection body = bodyBuilder.build();
+
+        Table table = new Table.Builder()
+            .setCellStyle(cellStyle)
+            .setHeader(header)
+            .setBody(body)
+            .build();
+
+        return TextRendering.render(table);
     }
 }
+

@@ -35,9 +35,9 @@
     </dependency>
     <!-- Tablas ASCII -->
     <dependency>
-      <groupId>de.vandermeer</groupId>
-      <artifactId>asciitable</artifactId>
-      <version>0.3.2</version>
+      <groupId>com.jakewharton.picnic</groupId>
+      <artifactId>picnic-jvm</artifactId>
+      <version>0.7.0</version>
     </dependency>
     <!-- Parseo de JSON -->
     <dependency>
