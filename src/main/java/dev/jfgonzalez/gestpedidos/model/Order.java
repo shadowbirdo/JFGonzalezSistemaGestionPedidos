@@ -1,7 +1,9 @@
 package dev.jfgonzalez.gestpedidos.model;
 
 import java.util.List;
-import com.jakewharton.picnic.*;
+import java.util.stream.IntStream;
+
+import dev.jfgonzalez.gestpedidos.util.TableBuilder;
 
 
 
@@ -28,7 +30,10 @@ public class Order {
     private List<Product> productList;
     private List<Integer> amountList;
 
-    public Order(int id, Customer customer, String status, List<Product> productList, List<Integer> amountList){
+    public Order(
+        int id, Customer customer, String status,
+        ArrayList<Product> productList, ArrayList<Integer> amountList
+    ){
         this.id = id;
         this.customer = customer;
         this.status = status;
@@ -49,10 +54,13 @@ public class Order {
         this.addProduct(product,1);;
     }
 
-    public void delProduct(Product product){
+    public int delProduct(Product product){
         int delIndex = this.productList.indexOf(product);
-        this.productList.remove(delIndex);
-        this.amountList.remove(delIndex);
+        if (delIndex != -1) {
+            this.productList.remove(delIndex);
+            this.amountList.remove(delIndex);
+        }
+        return delIndex;
     }
 
 
@@ -77,47 +85,25 @@ public class Order {
          */
         StringBuilder summary = new StringBuilder();
         summary.append("Client data\n");
-        summary.append("%d - %s - %s".formatted(this.id, this.customer, this.status));
+        summary.append("%d - %s - %s\n".formatted(this.id, this.customer, this.status));
 
-        summary.append(buildProductTable());
-
-        summary.append("Final price: %.2f".formatted(this.calcTotal()));
+        summary.append(new TableBuilder(
+            List.of("Producto", "Cantidad"),
+            this.prepareTableBody()
+        ).getRenderedTable());
 
         return summary.toString();
     }
 
-    private String buildProductTable() {
-        CellStyle cellStyle = new CellStyle.Builder()
-            .setBorder(true)
-            .build();
-        
-        TableSection header = new TableSection.Builder()
-            .addRow(new Row.Builder()
-                .addCell(new Cell.Builder("Product").build())
-                .addCell(new Cell.Builder("Amount").build())
-                .build()
-            ).build();
+    private List<List<String>> prepareTableBody() {
+        int size = Math.min(productList.size(),amountList.size());
 
-        TableSection.Builder bodyBuilder = new TableSection.Builder();
-        for (int i = 0; i < productList.size(); i++) {
-            Product product = this.productList.get(i);
-            int amount = this.amountList.get(i);
-            
-            bodyBuilder.addRow(new Row.Builder()
-                .addCell(new Cell.Builder(product.getName()).build())
-                .addCell(new Cell.Builder(String.valueOf(amount)).build())
-                .build()
-            );
-        }
-        TableSection body = bodyBuilder.build();
-
-        Table table = new Table.Builder()
-            .setCellStyle(cellStyle)
-            .setHeader(header)
-            .setBody(body)
-            .build();
-
-        return TextRendering.render(table);
+        return IntStream.range(0, size).mapToObj(
+            i -> List.of(
+                productList.get(i).getName(),
+                String.valueOf(amountList.get(i))
+            )
+        ).toList();
     }
 }
 
