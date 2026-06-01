@@ -3,6 +3,7 @@ package dev.jfgonzalez.gestpedidos.model;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import dev.jfgonzalez.gestpedidos.exceptions.Msg;
 import dev.jfgonzalez.gestpedidos.util.TableBuilder;
 
 
@@ -29,6 +30,7 @@ public class Order {
     private String status; // Pending, Delivered, Canceled
     private List<Product> productList;
     private List<Integer> amountList;
+    private float shippingFeeByWeight, shippingFeeByZone;
 
     public Order(
         int id, Customer customer, String status,
@@ -39,10 +41,20 @@ public class Order {
         this.status = status;
         this.productList = productList;
         this.amountList = amountList;
+        this.shippingFeeByWeight = 0;
+        this.shippingFeeByZone = 0;
     }
     
     public Order(int id, Customer client){
         this(id, client, "Pending", new ArrayList<Product>(), new ArrayList<Integer>());
+    }
+
+    public List<Product> getProductList() {
+        return productList;
+    }
+
+    public List<Integer> getAmountList() {
+        return amountList;
     }
 
     public void addProduct(Product product, int amount){
@@ -51,7 +63,7 @@ public class Order {
     }
 
     public void addProduct(Product product){
-        this.addProduct(product,1);;
+        this.addProduct(product,1);
     }
 
     public int delProduct(Product product){
@@ -63,16 +75,16 @@ public class Order {
         return delIndex;
     }
 
-
     public float calcTotal(){
-        if (productList.isEmpty()) throw new IllegalStateException("El pedido está vacío");
+        if (productList.isEmpty()) throw new IllegalStateException(Msg.EMPTY_ORDER);
         float totalPrice = 0;
         for(int i=0; i < productList.size(); i++) {
             Product product = this.productList.get(i);
             int amount = this.amountList.get(i);
+            if (product instanceof PhysicalProduct p) calcShippingFee(p);
             totalPrice += product.calcFinalPrice() * amount;
         }
-        return totalPrice;
+        return totalPrice + this.shippingFeeByWeight + this.shippingFeeByZone;
     }
 
     public String showSummary(){
@@ -104,6 +116,11 @@ public class Order {
                 String.valueOf(amountList.get(i))
             )
         ).toList();
+    }
+
+    private void calcShippingFee(PhysicalProduct product) {
+        if (product.getDeliveryFee() > this.shippingFeeByZone) this.shippingFeeByZone = product.getDeliveryFee();
+        this.shippingFeeByWeight += product.getWeight() < 10 ? 1 : 5;
     }
 }
 

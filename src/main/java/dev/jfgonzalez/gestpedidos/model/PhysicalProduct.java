@@ -5,6 +5,10 @@ package dev.jfgonzalez.gestpedidos.model;
  * Estos valores deben ser 0€ para envíos en España, 5€ Francia, Italia y Portugal, y 10€ para el resto.
  */
 public class PhysicalProduct extends Product{
+    private static final float ENVIO_NACIONAL = 0;
+    private static final float ENVIO_EUWEST = 5;
+    private static final float ENVIO_OTRO = 10;
+    
     private float weight;
     private float deliveryFee;
 
@@ -41,15 +45,15 @@ public class PhysicalProduct extends Product{
     public void applyDeliveryFee(String deliveryZone) {
         switch (deliveryZone.toLowerCase()) {
             case "españa":
-                this.deliveryFee = 0;
+                this.deliveryFee = ENVIO_NACIONAL;
                 break;
             case "francia":
             case "italia":
             case "portugal":
-                this.deliveryFee = 5;
+                this.deliveryFee = ENVIO_EUWEST;
                 break;
             default:
-                this.deliveryFee = 10;
+                this.deliveryFee = ENVIO_OTRO;
                 break;
         }
     }

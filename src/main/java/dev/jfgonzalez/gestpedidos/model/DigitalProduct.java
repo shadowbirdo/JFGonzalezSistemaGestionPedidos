@@ -2,10 +2,15 @@ package dev.jfgonzalez.gestpedidos.model;
 
 import dev.jfgonzalez.gestpedidos.exceptions.Msg;
 
+
 /**
  * Debe implementar el método aplicarIVA(String tipoIva). Los tipos válidos son "GENERAL" (21%), "REDUCIDO" (10%) y "SUPER" (4%).
  */
 public class DigitalProduct extends Product{
+    private static final float IVA_GENERAL = 1.21f;
+    private static final float IVA_REDUCIDO = 1.1f;
+    private static final float IVA_SUPER = 1.04f;
+    
     private String license;
     private float sizeInMB;
     private float ivaMult;
@@ -25,17 +30,20 @@ public class DigitalProduct extends Product{
     public void setLicense(String license) {this.license = license;}
     public float getSizeInMB() {return sizeInMB;}
     public void setSizeInMB(float sizeInMB) {this.sizeInMB = sizeInMB;}
+    public float getIvaMult() {
+        return ivaMult;
+    }
 
     public void applyIva(String tipoIva) {
         switch (tipoIva.toUpperCase()) {
             case "GENERAL":
-                this.ivaMult = 1.21f;
+                this.ivaMult = IVA_GENERAL;
                 break;
             case "REDUCIDO":
-                this.ivaMult = 1.10f;
+                this.ivaMult = IVA_REDUCIDO;
                 break;
             case "SUPER":
-                this.ivaMult = 1.04f;
+                this.ivaMult = IVA_SUPER;
                 break;
             default:
                 throw new IllegalArgumentException(Msg.INVALID_IVA);
