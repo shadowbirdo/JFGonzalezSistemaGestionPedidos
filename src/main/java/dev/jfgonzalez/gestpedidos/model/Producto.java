@@ -6,13 +6,13 @@ import dev.jfgonzalez.gestpedidos.exceptions.Msg;
  * - Atributos: id, nombre, precioBase.
  * - Validación Crítica: Si se intenta asignar un precio negativo, debe lanzar una excepción controlada (ej. IllegalArgumentException).
  */
-public abstract class Product {
+public class Producto {
     
     private int id;
     private String name;
-    private float price;
+    private double price;
 
-    protected Product(int id, String name, float price){
+    public Producto(int id, String name, double price){
         if (price < 0) throw new IllegalArgumentException(Msg.NEGATIVE_PRICE);
 
         this.id = id;
@@ -24,14 +24,15 @@ public abstract class Product {
     public void setId(int id) {this.id = id;}
     public String getName() {return name;}
     public void setName(String name) {this.name = name;}
-    public float getPrice() {return price;}
-    public void setPrice(float price) {
+    public double getPrice() {return price;}
+    public void setPrice(double price) {
         if (price < 0) throw new IllegalArgumentException(Msg.NEGATIVE_PRICE);
-
         this.price = price;
     }
 
-    public abstract float calcFinalPrice();
+    public double calcFinalPrice() {
+        return getPrice();
+    };
 
     @Override
     public String toString(){

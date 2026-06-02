@@ -6,13 +6,13 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import dev.jfgonzalez.gestpedidos.model.Customer;
+import dev.jfgonzalez.gestpedidos.model.Cliente;
 
 class ClientTest {
     @Test
     @DisplayName("Test de cobertura para setters, getters y toString")
     void testClientCoverage() {
-        Customer c = new Customer(1,"name");
+        Cliente c = new Cliente(1,"name");
         c.setName("new name");
         c.setEmail("mail@test.dev");
         c.setAddress("address");

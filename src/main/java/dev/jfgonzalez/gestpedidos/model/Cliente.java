@@ -5,26 +5,30 @@ package dev.jfgonzalez.gestpedidos.model;
  * - Los años de antigüedad y el estado VIP determinarán el porcentaje de descuento de fidelidad que la Tienda aplicará sobre el total del Pedido.
  * - El país indicará el gasto de envío que haya que aplicar en los casos correspondientes.
  */
-public class Customer {
+public class Cliente {
     private int id;
     private String name;
     private String address;
     private String email;
     private int yearsLoyalty;
     private boolean isVip;
-    private String country;
+    private String pais;
 
-    public Customer(int id, String name, String email, String address, int yearsLoyalty, boolean isVip, String country){
+    public Cliente(int id, String name, String email, String address, int yearsLoyalty, boolean isVip, String pais){
         this.id = id;
         this.name = name;
         this.email = email;
         this.address = address;
         this.yearsLoyalty = yearsLoyalty;
         this.isVip = isVip;
-        this.country = country;
+        this.pais = pais;
     }
 
-    public Customer(int id, String name){
+    public Cliente(int id, String name, int yearsLoyalty, boolean isVip, String country) {
+        this(id,name,"","",yearsLoyalty,isVip,country);
+    }
+
+    public Cliente(int id, String name){
         this(id,name,"","",0,false,"");
     }
 
@@ -40,12 +44,12 @@ public class Customer {
     public void setYearsLoyalty(int yearsLoyalty) {this.yearsLoyalty = yearsLoyalty;}
     public boolean getIsVip() {return isVip;}
     public void setIsVip(boolean isVip) {this.isVip = isVip;}
-    public String getCountry() {return country;}
-    public void setCountry(String country) {this.country = country;}
+    public String getPais() {return pais;}
+    public void setPais(String country) {this.pais = country;}
 
     public String toString(){
         return "{\"id\":\"%d\",\"name\":\"%s\",\"address\":\"%s\",\"email\":\"%s\",\"yearsLoyalty\":\"%d\",\"isVip\":\"%s\",\"country\":\"%s\"}".formatted(
-            this.id, this.name, this.address, this.email, this.yearsLoyalty, this.isVip, this.country
+            this.id, this.name, this.address, this.email, this.yearsLoyalty, this.isVip, this.pais
         );
     }
 }

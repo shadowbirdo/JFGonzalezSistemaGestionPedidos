@@ -6,20 +6,20 @@ import dev.jfgonzalez.gestpedidos.exceptions.Msg;
 /**
  * Debe implementar el método aplicarIVA(String tipoIva). Los tipos válidos son "GENERAL" (21%), "REDUCIDO" (10%) y "SUPER" (4%).
  */
-public class DigitalProduct extends Product{
-    private static final float IVA_GENERAL = 1.21f;
-    private static final float IVA_REDUCIDO = 1.1f;
-    private static final float IVA_SUPER = 1.04f;
+public class ProductoDigital extends Producto{
+    public static final float IVA_GENERAL = 1.21f;
+    public static final float IVA_REDUCIDO = 1.1f;
+    public static final float IVA_SUPER = 1.04f;
     
     private String license;
     private float sizeInMB;
     private float ivaMult;
 
-    public DigitalProduct(int id, String name, float price) {
+    public ProductoDigital(int id, String name, float price) {
         this(id, name, price, null, 0);
     }
 
-    public DigitalProduct(int id, String name, float price, String license, float sizeInMB){
+    public ProductoDigital(int id, String name, float price, String license, float sizeInMB){
         super(id, name, price);
         this.license = license;
         this.sizeInMB = sizeInMB;
@@ -51,7 +51,7 @@ public class DigitalProduct extends Product{
     }
 
     @Override
-    public float calcFinalPrice(){return this.getPrice() * this.ivaMult;}
+    public double calcFinalPrice(){return this.getPrice() * this.ivaMult;}
 
     @Override
     public String toString(){
