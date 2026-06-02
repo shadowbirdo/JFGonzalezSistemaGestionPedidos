@@ -10,8 +10,18 @@ import dev.jfgonzalez.gestpedidos.model.*;
  */
 public class Tienda {
 
-    public Factura realizarVenta(Cliente c, Pedido p) {
-        return null;
+    public Factura realizarVenta(Cliente cliente, Pedido pedido) {
+        if (pedido.getCliente() != cliente) throw new IllegalArgumentException();
+        if (!pedido.getProductos().stream().anyMatch(p -> p instanceof ProductoDigital)) {
+            /* Cálculo para productos físicos */
+        }
+        double totalNeto = 0;
+        for (Producto p : pedido.getProductos()) {
+            totalNeto += p.getPrecioBase();
+        }
+        Factura factura = new Factura();
+        
+        return factura;
     }
 
 }

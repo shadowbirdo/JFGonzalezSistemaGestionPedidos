@@ -39,6 +39,21 @@ public class Factura {
         this.descuento = descuento;
     }
 
+    public Factura(
+        String codigoFactura, LocalDate fechaEmision, double totalNeto,
+        double totalIva, double totalEnvio, double descuento
+    ) {
+        this(
+            codigoFactura,
+            fechaEmision,
+            totalNeto,
+            totalIva,
+            totalEnvio,
+            totalNeto + totalEnvio + totalIva - descuento,
+            descuento
+        );
+    }
+
     public Factura(String codigoFactura, float totalNeto, float totalIva, float totalEnvio, float totalFinal) {
         this(
             codigoFactura,
@@ -46,7 +61,6 @@ public class Factura {
             totalNeto,
             totalIva,
             totalEnvio,
-            totalFinal,
             0
         );
     }
@@ -56,7 +70,7 @@ public class Factura {
     }
 
     public Factura() {
-        this(null,0,0,0,0);
+        this(genId(),0,0,0,0);
     }
 
     public String getCodigoFactura() {
@@ -130,9 +144,9 @@ public class Factura {
 
             bodyBuilder.addRow(
                 new Row.Builder()
-                .addCell(p.getName())
+                .addCell(p.getNombre())
                 .addCell(String.valueOf(amount))
-                .addCell("%.2f".formatted(p.getPrice()))
+                .addCell("%.2f".formatted(p.getPrecioBase()))
                 .addCell("%.0f%%".formatted(p instanceof ProductoDigital dp ? dp.getIvaMult() * 100 - 100 : 0))
                 .addCell("%.0f".formatted(p instanceof ProductoFisico pp ? pp.getDeliveryFee() : 0))
                 .addCell("-")

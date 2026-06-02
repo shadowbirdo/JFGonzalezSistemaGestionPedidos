@@ -13,13 +13,13 @@ class ClientTest {
     @DisplayName("Test de cobertura para setters, getters y toString")
     void testClientCoverage() {
         Cliente c = new Cliente(1,"name");
-        c.setName("new name");
+        c.setNombre("new name");
         c.setEmail("mail@test.dev");
-        c.setAddress("address");
+        c.setDireccion("address");
         
-        assertEquals("new name", c.getName());
+        assertEquals("new name", c.getNombre());
         assertEquals("mail@test.dev", c.getEmail());
-        assertEquals("address", c.getAddress());
+        assertEquals("address", c.getDireccion());
         assertNotNull(c.toString());
     }
 }

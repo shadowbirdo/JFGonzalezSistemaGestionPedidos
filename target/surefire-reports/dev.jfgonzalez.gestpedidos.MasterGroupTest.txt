@@ -1,0 +1,88 @@
+-------------------------------------------------------------------------------
+Test set: dev.jfgonzalez.gestpedidos.MasterGroupTest
+-------------------------------------------------------------------------------
+Tests run: 24, Failures: 7, Errors: 4, Skipped: 0, Time elapsed: 0.037 s <<< FAILURE! -- in dev.jfgonzalez.gestpedidos.MasterGroupTest
+dev.jfgonzalez.gestpedidos.MasterGroupTest.testPedidoNoDebeCompartirListaExterna -- Time elapsed: 0 s <<< ERROR!
+java.lang.IllegalArgumentException
+	at dev.jfgonzalez.gestpedidos.model.Pedido.<init>(Pedido.java:47)
+	at dev.jfgonzalez.gestpedidos.model.Pedido.<init>(Pedido.java:61)
+	at dev.jfgonzalez.gestpedidos.MasterGroupTest.testPedidoNoDebeCompartirListaExterna(MasterGroupTest.java:226)
+
+dev.jfgonzalez.gestpedidos.MasterGroupTest.testRealizarVentaSoloFisicoSinIvaDigital -- Time elapsed: 0.009 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: La venta solo con productos fisicos deberia sumar correctamente el total neto ==> expected: <100.0> but was: <0.0>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:158)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:139)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:201)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:72)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:964)
+	at dev.jfgonzalez.gestpedidos.MasterGroupTest.testRealizarVentaSoloFisicoSinIvaDigital(MasterGroupTest.java:114)
+
+dev.jfgonzalez.gestpedidos.MasterGroupTest.testPedidoNoDebeCompartirMapaExterno -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.IllegalArgumentException
+	at dev.jfgonzalez.gestpedidos.model.Pedido.<init>(Pedido.java:47)
+	at dev.jfgonzalez.gestpedidos.model.Pedido.<init>(Pedido.java:61)
+	at dev.jfgonzalez.gestpedidos.MasterGroupTest.testPedidoNoDebeCompartirMapaExterno(MasterGroupTest.java:244)
+
+dev.jfgonzalez.gestpedidos.MasterGroupTest.testPedidoDebePermitirCreacionConColeccionesIniciales -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.IllegalArgumentException
+	at dev.jfgonzalez.gestpedidos.model.Pedido.<init>(Pedido.java:47)
+	at dev.jfgonzalez.gestpedidos.model.Pedido.<init>(Pedido.java:61)
+	at dev.jfgonzalez.gestpedidos.MasterGroupTest.testPedidoDebePermitirCreacionConColeccionesIniciales(MasterGroupTest.java:167)
+
+dev.jfgonzalez.gestpedidos.MasterGroupTest.testRealizarVentaSoloProductosGenericosSinEnvioNiIva -- Time elapsed: 0.001 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: La venta con productos genericos deberia sumar correctamente el total neto ==> expected: <36.0> but was: <0.0>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:158)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:139)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:201)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:72)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:964)
+	at dev.jfgonzalez.gestpedidos.MasterGroupTest.testRealizarVentaSoloProductosGenericosSinEnvioNiIva(MasterGroupTest.java:132)
+
+dev.jfgonzalez.gestpedidos.MasterGroupTest.testRealizarVentaConPaisVacioFalla -- Time elapsed: 0.001 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: La venta deberia fallar si el pais del cliente esta vacio o en blanco ==> Expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown.
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:159)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:74)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:40)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3249)
+	at dev.jfgonzalez.gestpedidos.MasterGroupTest.testRealizarVentaConPaisVacioFalla(MasterGroupTest.java:99)
+
+dev.jfgonzalez.gestpedidos.MasterGroupTest.testPedidoCreadoConColeccionesDebeCalcularTotal -- Time elapsed: 0 s <<< ERROR!
+java.lang.IllegalArgumentException
+	at dev.jfgonzalez.gestpedidos.model.Pedido.<init>(Pedido.java:47)
+	at dev.jfgonzalez.gestpedidos.model.Pedido.<init>(Pedido.java:61)
+	at dev.jfgonzalez.gestpedidos.MasterGroupTest.testPedidoCreadoConColeccionesDebeCalcularTotal(MasterGroupTest.java:192)
+
+dev.jfgonzalez.gestpedidos.MasterGroupTest.testRealizarVentaConPaisNuloFalla -- Time elapsed: 0.001 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: La venta deberia fallar si el pais del cliente es nulo ==> Expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown.
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:159)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:74)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:40)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3249)
+	at dev.jfgonzalez.gestpedidos.MasterGroupTest.testRealizarVentaConPaisNuloFalla(MasterGroupTest.java:86)
+
+dev.jfgonzalez.gestpedidos.MasterGroupTest.testFacturaToStringIncluyeContenidoEsperado -- Time elapsed: 0 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: El texto de la factura deberia incluir el codigo de factura ==> expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:158)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:139)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:69)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:41)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:228)
+	at dev.jfgonzalez.gestpedidos.MasterGroupTest.testFacturaToStringIncluyeContenidoEsperado(MasterGroupTest.java:392)
+
+dev.jfgonzalez.gestpedidos.MasterGroupTest.testCalcularEnvioSinProductosFisicos -- Time elapsed: 0 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Un pedido sin productos fisicos esta aplicando solo la tarifa base del pais ==> expected: <5.0> but was: <0.0>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:158)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:139)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:201)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:72)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:964)
+	at dev.jfgonzalez.gestpedidos.MasterGroupTest.testCalcularEnvioSinProductosFisicos(MasterGroupTest.java:63)
+
+dev.jfgonzalez.gestpedidos.MasterGroupTest.testRealizarVentaConPedidoVacioFalla -- Time elapsed: 0.001 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Una venta con un pedido vacio deberia lanzar IllegalArgumentException ==> Expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown.
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:159)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:74)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:40)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3249)
+	at dev.jfgonzalez.gestpedidos.MasterGroupTest.testRealizarVentaConPedidoVacioFalla(MasterGroupTest.java:47)
+

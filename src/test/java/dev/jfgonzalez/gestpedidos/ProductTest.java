@@ -15,8 +15,8 @@ class ProductTest {
     @Test
     @DisplayName("CP-01: DigitalProd debe aplicar un 5% de descuento")
     void testDigitalProdCalcPrice() {
-        ProductoDigital digitalProduct = new ProductoDigital(1,"test_product", 10, "test_license", 123);
-        digitalProduct.applyIva("REDUCIDO");
+        ProductoDigital digitalProduct = new ProductoDigital(1,"test_product", 10, "test_license", 123, 0);
+        digitalProduct.aplicarIva("REDUCIDO");
         
         double finalPrice = digitalProduct.calcFinalPrice();
 
@@ -46,7 +46,7 @@ class ProductTest {
     @Test
     @DisplayName("CP-08: El precio de un producto digital NO equivale a su precio base")
     void testDigitalPriceNotEqualsBase() {
-        ProductoDigital digitalProduct = new ProductoDigital(1,"Video", 50.0f, "Lic", 10.0f);
+        ProductoDigital digitalProduct = new ProductoDigital(1,"Video", 50.0f, "Lic", 10.0f, 0);
         double finalPrice = digitalProduct.calcFinalPrice();
         assertNotEquals(50.0f, finalPrice, "El precio final con descuento no debe ser igual al precio bruto");
     }
@@ -63,19 +63,19 @@ class ProductTest {
     @DisplayName("Test de cobertura para setters, getters y toString")
     void testProductCoverage() {
         ProductoFisico p = new ProductoFisico(1,"Duff", 10.0f);
-        p.setName("Duff Premium");
-        p.setPrice(12.0f);
+        p.setNombre("Duff Premium");
+        p.setPrecioBase(12.0f);
         
-        assertEquals("Duff Premium", p.getName());
-        assertEquals(12.0f, p.getPrice());
+        assertEquals("Duff Premium", p.getNombre());
+        assertEquals(12.0f, p.getPrecioBase());
         assertNotNull(p.toString());
         
-        ProductoDigital d = new ProductoDigital(2,"Video", 5.0f, "Lic", 100.0f);
-        d.setLicense("Premium");
+        ProductoDigital d = new ProductoDigital(2,"Video", 5.0f, "Lic", 100.0f, 0);
+        d.setLicencia("Premium");
         d.setSizeInMB(200.0f);
         
-        assertEquals("Premium", d.getLicense());
-        assertEquals(200.0f, d.getSizeInMB());
+        assertEquals("Premium", d.getLicencia());
+        assertEquals(200.0f, d.getPesoEnMB());
         assertNotNull(d.toString());
     }
 }

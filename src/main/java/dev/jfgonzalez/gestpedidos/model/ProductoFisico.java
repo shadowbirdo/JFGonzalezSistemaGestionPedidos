@@ -42,7 +42,7 @@ public class ProductoFisico extends Producto{
 
     @Override
     public double calcFinalPrice(){
-        return this.getPrice() + this.deliveryFee;
+        return this.getPrecioBase() + this.deliveryFee;
     }
 
     public void applyDeliveryFee(String deliveryZone) {

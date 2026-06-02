@@ -2,6 +2,8 @@ package dev.jfgonzalez.gestpedidos.model;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import dev.jfgonzalez.gestpedidos.exceptions.Msg;
@@ -30,60 +32,52 @@ public class Pedido {
      */
     private int idPedido;
     private Cliente cliente;
-    private String status; // Pending, Delivered, Canceled
+    private String estado; // Pending, Delivered, Canceled
     private List<Producto> productos;
     private Map<Integer, Integer> cantidades;
     private double shippingFeeByWeight, shippingFeeByZone;
 
     public Pedido(
         int id, Cliente cliente, String status,
-        ArrayList<Producto> productList, HashMap<Integer,Integer> amountList
+        List<Producto> productos, Map<Integer,Integer> cantidades
     ){
+        if (productos != null) {
+            for (Producto p : productos) {
+                if (p != null && (cantidades == null || !cantidades.containsKey(p.getId()))) {
+                    throw new IllegalArgumentException();
+                }
+            }
+        }
         this.idPedido = id;
         this.cliente = cliente;
-        this.status = status;
-        this.productos = productList;
-        this.cantidades = amountList;
+        this.estado = status;
+        this.productos = productos != null ? new ArrayList<>(productos) : new ArrayList<>();
+        this.cantidades = cantidades != null ? new HashMap<>(cantidades) : new HashMap<>();
         this.shippingFeeByWeight = 0;
         this.shippingFeeByZone = 0;
     }
     
     public Pedido(int id, Cliente cliente, List<Producto> productos, Map<Integer,Integer> cantidades){
-        this.idPedido = id;
-        this.cliente = cliente;
-        this.productos = productos;
-        this.cantidades = cantidades;
+        this(id, cliente, "Pending", productos, cantidades);
+
     }
 
     public Pedido(int id, Cliente cliente){
         this(id, cliente, "Pending", new ArrayList<Producto>(), new HashMap<Integer,Integer>());
     }
 
-    public int getIdPedido() {
-        return idPedido;
-    }
-    public void setIdPedido(int idPedido) {
-        this.idPedido = idPedido;
-    }
-    public Cliente getCliente() {
-        return cliente;
-    }
-    public void setCliente(Cliente customer) {
-        this.cliente = customer;
-    }
-    
-
-    public List<Producto> getProductos() {
-        return productos;
-    }
-
-    public Map<Integer,Integer> getCantidades() {
-        return cantidades;
-    }
+    public int getIdPedido() {return idPedido;}
+    public void setIdPedido(int idPedido) {this.idPedido = idPedido;}
+    public Cliente getCliente() {return cliente;}
+    public void setCliente(Cliente customer) {this.cliente = customer;}
+    public List<Producto> getProductos() {return new ArrayList<>(productos);}
+    public void setProductos(List<Producto> productos) {this.productos = new ArrayList<>(productos);}
+    public Map<Integer,Integer> getCantidades() {return new HashMap<Integer,Integer>(cantidades);}
+    public void setCantidades(Map<Integer, Integer> cantidades) {this.cantidades = new HashMap<>(cantidades);}
 
     public void addProducto(Producto product, int amount){
         this.productos.add(product);
-        this.cantidades.put(product.getId(),amount);
+        this.cantidades.put(product.getSysId(),amount);
     }
 
     public void addProducto(Producto product){
@@ -94,7 +88,7 @@ public class Pedido {
         int delIndex = this.productos.indexOf(product);
         if (delIndex != -1) {
             this.productos.remove(delIndex);
-            this.cantidades.remove(delIndex);
+            this.cantidades.remove(product.getSysId());
         }
         return delIndex;
     }
@@ -102,13 +96,23 @@ public class Pedido {
     public double calcularTotal(){
         if (productos.isEmpty()) throw new IllegalStateException(Msg.EMPTY_ORDER);
         float totalPrice = 0;
+
+        this.shippingFeeByWeight = 0;
+        this.shippingFeeByZone = 0;
+
         for(int i=0; i < productos.size(); i++) {
             Producto product = this.productos.get(i);
-            int amount = this.cantidades.get(i);
+            int amount = this.cantidades.getOrDefault(product.getSysId(),1);
             if (product instanceof ProductoFisico p) calcShippingFee(p);
             totalPrice += product.calcFinalPrice() * amount;
         }
-        return totalPrice + this.shippingFeeByWeight + this.shippingFeeByZone;
+
+        double baseEnvio = 0;
+        if (this.cliente != null && this.cliente.getPais() != null) {
+            baseEnvio = calcularEnvio(this.cliente.getPais());
+        }
+
+        return totalPrice + this.shippingFeeByWeight + this.shippingFeeByZone + baseEnvio;
     }
 
     public String showSummary(){
@@ -121,7 +125,7 @@ public class Pedido {
          */
         StringBuilder summary = new StringBuilder();
         summary.append("Client data\n");
-        summary.append("%d - %s - %s\n".formatted(this.idPedido, this.cliente, this.status));
+        summary.append("%d - %s - %s\n".formatted(this.idPedido, this.cliente, this.estado));
 
         summary.append(new TableBuilder(
             List.of("Producto", "Cantidad"),
@@ -132,13 +136,16 @@ public class Pedido {
     }
 
     private List<List<String>> prepareTableBody() {
-        int size = Math.min(productos.size(),cantidades.size());
+        int size = productos.size();
 
         return IntStream.range(0, size).mapToObj(
-            i -> List.of(
-                productos.get(i).getName(),
-                String.valueOf(cantidades.get(i))
-            )
+            i -> {
+                Producto p = productos.get(i);
+                return List.of(
+                    productos.get(i).getNombre(),
+                    String.valueOf(cantidades.getOrDefault(p.getSysId(),0))
+                );
+            }
         ).toList();
     }
 
@@ -148,6 +155,7 @@ public class Pedido {
     }
 
     public float calcularEnvio(String pais) {
+        if (!this.productos.stream().anyMatch(prod -> prod instanceof ProductoFisico)) return 0;
         switch (pais.toLowerCase()) {
             case "españa":
                 return 0;
@@ -161,17 +169,16 @@ public class Pedido {
     }
 
     public double calcularIva(String tipoIva){
-        switch (tipoIva.toUpperCase()) {
-            case "GENERAL":
-                return ProductoDigital.IVA_GENERAL;
-            case "SUPER":
-                return ProductoDigital.IVA_SUPER;
-            case "REDUCIDO":
-                return ProductoDigital.IVA_SUPER;
-            default:
-                return ProductoDigital.IVA_GENERAL;
+        return this.productos.stream()
+            .filter(p -> p instanceof ProductoDigital)
+            .mapToDouble(p -> {
+                ProductoDigital pd = (ProductoDigital) p;
+                double ivaUd = pd.aplicarIva(tipoIva);
+                int cantidad = this.cantidades.getOrDefault(pd.getSysId(), 1);
+                return ivaUd * cantidad;
+            })
+            .sum();
         }
-    }
 
 }
 

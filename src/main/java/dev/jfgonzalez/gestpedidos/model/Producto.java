@@ -9,33 +9,36 @@ import dev.jfgonzalez.gestpedidos.exceptions.Msg;
 public class Producto {
     
     private int id;
-    private String name;
-    private double price;
+    private String nombre;
+    private double precioBase;
 
-    public Producto(int id, String name, double price){
-        if (price < 0) throw new IllegalArgumentException(Msg.NEGATIVE_PRICE);
+    public Producto(int id, String nombre, double precioBase){
+        if (precioBase < 0) throw new IllegalArgumentException(Msg.NEGATIVE_PRICE);
 
         this.id = id;
-        this.name = name;
-        this.price = price;
+        this.nombre = nombre;
+        this.precioBase = precioBase;
     }
 
     public int getId() {return id;}
     public void setId(int id) {this.id = id;}
-    public String getName() {return name;}
-    public void setName(String name) {this.name = name;}
-    public double getPrice() {return price;}
-    public void setPrice(double price) {
-        if (price < 0) throw new IllegalArgumentException(Msg.NEGATIVE_PRICE);
-        this.price = price;
+    public String getNombre() {return nombre;}
+    public void setNombre(String nombre) {this.nombre = nombre;}
+    public double getPrecioBase() {return precioBase;}
+    public void setPrecioBase(double precio) {
+        if (precio < 0) throw new IllegalArgumentException(Msg.NEGATIVE_PRICE);
+        this.precioBase = precio;
     }
 
+    public int getSysId() {return System.identityHashCode(this);}
+
     public double calcFinalPrice() {
-        return getPrice();
+        return getPrecioBase();
     };
 
     @Override
     public String toString(){
-        return "{\"id\":\"%d\",\"name\":\"%s\",\"basePrice\":\"%.2f\"}".formatted(this.id, this.name, this.price);
+        return "{\"id\":\"%d\",\"nombre\":\"%s\",\"precioBase\":\"%.2f\"}".formatted(this.id, this.nombre, this.precioBase);
     }
+
 }
