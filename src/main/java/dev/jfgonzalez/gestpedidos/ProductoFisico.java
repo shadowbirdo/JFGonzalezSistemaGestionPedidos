@@ -59,9 +59,7 @@ public class ProductoFisico extends Producto{
         switch (zonaDestino.toLowerCase()) {
             case "españa":
                 return ENVIO_NACIONAL;
-            case "francia":
-            case "italia":
-            case "portugal":
+            case "francia","italia","portugal":
                 return ENVIO_VECINO;
             default:
                 return ENVIO_OTRO;

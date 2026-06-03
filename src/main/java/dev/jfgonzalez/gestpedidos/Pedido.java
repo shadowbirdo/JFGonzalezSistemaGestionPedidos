@@ -18,8 +18,8 @@ import java.util.HashMap;
  */
 public class Pedido {
     // Constantes
-    public final static String PRODUCT_LIST_EMPTY_EXCEPTION_MESSAGE = "Could not process order. Order is empty.";
-    public final static double PRECIO_POR_KILO = .1;
+    public static final String PRODUCT_LIST_EMPTY_EXCEPTION_MESSAGE = "Could not process order. Order is empty.";
+    public static final double PRECIO_POR_KILO = .1;
 
     // Atributos
     private int idPedido;
@@ -71,7 +71,7 @@ public class Pedido {
      * @param cliente - Cliente al que se le asigna el Pedido
      */
     public Pedido(int id, Cliente cliente){
-        this(id, cliente, "PENDIENTE", new ArrayList<Producto>(), new HashMap<Integer,Integer>());
+        this(id, cliente, "PENDIENTE", new ArrayList<>(), new HashMap<>());
     }
 
     // Getters & Setters
@@ -81,7 +81,7 @@ public class Pedido {
     public void setCliente(Cliente customer) {this.cliente = customer;}
     public List<Producto> getProductos() {return new ArrayList<>(productos);}
     public void setProductos(List<Producto> productos) {this.productos = new ArrayList<>(productos);}
-    public Map<Integer,Integer> getCantidades() {return new HashMap<Integer,Integer>(cantidades);}
+    public Map<Integer,Integer> getCantidades() {return new HashMap<>(cantidades);}
     public void setCantidades(Map<Integer, Integer> cantidades) {this.cantidades = new HashMap<>(cantidades);}
 
     // Métodos
@@ -91,9 +91,11 @@ public class Pedido {
      * @param cantidad - El número de productos a añadir, registrado en el mapa "cantidades"
      */
     public void addProducto(Producto producto, int cantidad){
-        if (producto instanceof ProductoDigital pd) this.productos.add(new ProductoDigital(pd));
-        else if (producto instanceof ProductoFisico pf) this.productos.add(new ProductoFisico(pf));
-        else this.productos.add(new Producto(producto));
+        switch (producto) {
+            case ProductoDigital pd -> this.productos.add(new ProductoDigital(pd));
+            case ProductoFisico pf -> this.productos.add(new ProductoFisico(pf));
+            case null, default -> this.productos.add(new Producto(producto));
+        }
         this.cantidades.put(producto.getId(),cantidad);
     }
 
@@ -110,7 +112,7 @@ public class Pedido {
      * @param id - Identificador único
      */
     public void delProduct(int id){
-        if (!productos.stream().anyMatch(p -> p.getId() == id) || !cantidades.containsKey(id)) throw new IllegalArgumentException();
+        if (productos.stream().noneMatch(p -> p.getId() == id) || !cantidades.containsKey(id)) throw new IllegalArgumentException();
         this.productos.removeIf(p -> p.getId() == id);
         this.cantidades.remove(id);
     }
@@ -138,9 +140,9 @@ public class Pedido {
      * @return Gastos de envío del pedido
      */
     public double calcularEnvio(String pais) {
-        if (this.productos.stream().allMatch(prod -> prod instanceof ProductoDigital)) return 0;
+        if (this.productos.stream().allMatch(ProductoDigital.class::isInstance)) return 0;
         double envio = this.productos.stream()
-            .filter(p -> p instanceof ProductoFisico)
+            .filter(ProductoFisico.class::isInstance)
             .map(p -> (ProductoFisico)p)
             .mapToDouble(p ->
                 p.getPeso() * PRECIO_POR_KILO * cantidades.getOrDefault(p.getId(),1)
@@ -150,9 +152,7 @@ public class Pedido {
         switch (pais.toLowerCase()) {
             case "españa":
                 return envio + 0;
-            case "francia":
-            case "italia":
-            case "portugal":
+            case "francia","italia","portugal":
                 return envio + 5;
             default:
                 return envio + 10;
@@ -166,7 +166,7 @@ public class Pedido {
      */
     public double calcularIva(String tipoIva){
         return this.productos.stream()
-            .filter(p -> p instanceof ProductoDigital)
+            .filter(ProductoDigital.class::isInstance)
             .mapToDouble(p -> {
                 ProductoDigital pd = (ProductoDigital) p;
                 pd.aplicarIva(tipoIva);
@@ -193,7 +193,8 @@ public class Pedido {
      * @return Lista de productos en formato JSON
      */
     public String productosToString() {
-        return this.productos == null ? "" : "{%s}".formatted(
+        if (this.productos == null) return "null";
+        return "{%s}".formatted(
             this.productos.stream()
                 .map(p -> p != null ? p.toString() : "null")
                 .collect(Collectors.joining(","))

@@ -132,34 +132,33 @@ public class Factura {
      */
     public String generarFactura(Pedido pedido){
 <span class="nc" id="L134">        StringBuilder factura = new StringBuilder();</span>
-        //calcularFactura(pedido);
-<span class="nc" id="L136">        factura.append(&quot;---%s---\n&quot;.formatted(this.codigoFactura));</span>
-<span class="nc" id="L137">        factura.append(&quot;==========\n&quot;);</span>
-<span class="nc bnc" id="L138" title="All 2 branches missed.">        for (Producto p : pedido.getProductos()) {</span>
-<span class="nc" id="L139">            int cantidad = pedido.getCantidades().get(p.getId());</span>
-<span class="nc" id="L140">            String nombre = p.getNombre();</span>
-<span class="nc" id="L141">            double precioFinal = p.calcularPrecioFinal();</span>
-<span class="nc" id="L142">            factura.append(&quot;%d - %s - %.2f€\n&quot;.formatted(cantidad,nombre,precioFinal));</span>
-<span class="nc" id="L143">        }</span>
-<span class="nc" id="L144">        factura.append(&quot;==========\n&quot;);</span>
-<span class="nc" id="L145">        factura.append(&quot;Total neto: %.2f€\n&quot;.formatted(totalNeto));</span>
-<span class="nc" id="L146">        factura.append(&quot;IVA: %.2f€\n&quot;.formatted(totalIva));</span>
-<span class="nc" id="L147">        factura.append(&quot;Envío: %.2f€\n&quot;.formatted(totalEnvio));</span>
-<span class="nc" id="L148">        factura.append(&quot;Descuento: %.2f€\n&quot;.formatted(descuento));</span>
-<span class="nc" id="L149">        factura.append(&quot;----------&quot;);</span>
-<span class="nc" id="L150">        factura.append(&quot;Total final: %.2f€\n&quot;.formatted(totalFinal));</span>
+<span class="nc" id="L135">        factura.append(&quot;---%s---%n&quot;.formatted(this.codigoFactura));</span>
+<span class="nc" id="L136">        factura.append(&quot;==========%n&quot;);</span>
+<span class="nc bnc" id="L137" title="All 2 branches missed.">        for (Producto p : pedido.getProductos()) {</span>
+<span class="nc" id="L138">            int cantidad = pedido.getCantidades().get(p.getId());</span>
+<span class="nc" id="L139">            String nombre = p.getNombre();</span>
+<span class="nc" id="L140">            double precioFinal = p.calcularPrecioFinal();</span>
+<span class="nc" id="L141">            factura.append(&quot;%d - %s - %.2f€%n&quot;.formatted(cantidad,nombre,precioFinal));</span>
+<span class="nc" id="L142">        }</span>
+<span class="nc" id="L143">        factura.append(&quot;==========%n&quot;);</span>
+<span class="nc" id="L144">        factura.append(&quot;Total neto: %.2f€%n&quot;.formatted(totalNeto));</span>
+<span class="nc" id="L145">        factura.append(&quot;IVA: %.2f€%n&quot;.formatted(totalIva));</span>
+<span class="nc" id="L146">        factura.append(&quot;Envío: %.2f€%n&quot;.formatted(totalEnvio));</span>
+<span class="nc" id="L147">        factura.append(&quot;Descuento: %.2f€%n&quot;.formatted(descuento));</span>
+<span class="nc" id="L148">        factura.append(&quot;----------&quot;);</span>
+<span class="nc" id="L149">        factura.append(&quot;Total final: %.2f€%n&quot;.formatted(totalFinal));</span>
 
-<span class="nc" id="L152">        return factura.toString();</span>
+<span class="nc" id="L151">        return factura.toString();</span>
     }
 
     @Override
     public String toString() {
-<span class="fc" id="L157">        return &quot;Factura: &quot; + codigoFactura + &quot;\n&quot; +</span>
-               &quot;Fecha de emision: &quot; + fechaEmision + &quot;\n&quot; +
-               &quot;Total neto: &quot; + totalNeto + &quot;\n&quot; +
-               &quot;Total IVA: &quot; + totalIva + &quot;\n&quot; +
-               &quot;Total envio: &quot; + totalEnvio + &quot;\n&quot; +
-               &quot;Descuento: &quot; + descuento + &quot;\n&quot; +
+<span class="fc" id="L156">        return &quot;Factura: &quot; + codigoFactura + &quot;%n&quot; +</span>
+               &quot;Fecha de emision: &quot; + fechaEmision + &quot;%n&quot; +
+               &quot;Total neto: &quot; + totalNeto + &quot;%n&quot; +
+               &quot;Total IVA: &quot; + totalIva + &quot;%n&quot; +
+               &quot;Total envio: &quot; + totalEnvio + &quot;%n&quot; +
+               &quot;Descuento: &quot; + descuento + &quot;%n&quot; +
                &quot;Total final: &quot; + totalFinal;
     }
 
@@ -168,14 +167,14 @@ public class Factura {
      * @return Cadena en formato JSON
      */
     public String toJson() {
-<span class="nc" id="L171">        return &quot;{\&quot;codigoFactura\&quot;:\&quot;%s\&quot;,\&quot;fechaEmision\&quot;:\&quot;%s\&quot;,\&quot;totalNeto\&quot;:\&quot;%.2f\&quot;,\&quot;totalIva\&quot;:\&quot;%.2f\&quot;,\&quot;totalEnvio\&quot;:\&quot;%.2f\&quot;,\&quot;totalFinal\&quot;:\&quot;%.2f\&quot;,\&quot;descuento\&quot;:\&quot;%.2f\&quot;}&quot;.formatted(</span>
+<span class="nc" id="L170">        return &quot;{\&quot;codigoFactura\&quot;:\&quot;%s\&quot;,\&quot;fechaEmision\&quot;:\&quot;%s\&quot;,\&quot;totalNeto\&quot;:\&quot;%.2f\&quot;,\&quot;totalIva\&quot;:\&quot;%.2f\&quot;,\&quot;totalEnvio\&quot;:\&quot;%.2f\&quot;,\&quot;totalFinal\&quot;:\&quot;%.2f\&quot;,\&quot;descuento\&quot;:\&quot;%.2f\&quot;}&quot;.formatted(</span>
             this.codigoFactura, 
             this.fechaEmision, 
-<span class="nc" id="L174">            this.totalNeto, </span>
-<span class="nc" id="L175">            this.totalIva, </span>
-<span class="nc" id="L176">            this.totalEnvio, </span>
-<span class="nc" id="L177">            this.totalFinal, </span>
-<span class="nc" id="L178">            this.descuento</span>
+<span class="nc" id="L173">            this.totalNeto, </span>
+<span class="nc" id="L174">            this.totalIva, </span>
+<span class="nc" id="L175">            this.totalEnvio, </span>
+<span class="nc" id="L176">            this.totalFinal, </span>
+<span class="nc" id="L177">            this.descuento</span>
         );
     }
 
@@ -184,13 +183,13 @@ public class Factura {
      * @param pedido - Pedido con el que se está trabajando
      */
     public void calcularFactura(Pedido pedido) {
-<span class="nc bnc" id="L187" title="All 2 branches missed.">        for (Producto p : pedido.getProductos()) {</span>
-<span class="nc" id="L188">            totalNeto += p.getPrecioBase() * pedido.getCantidades().get(p.getId());</span>
-<span class="nc" id="L189">        }</span>
-<span class="nc" id="L190">        this.totalIva = 0;</span>
-<span class="nc" id="L191">        this.totalEnvio = 0;</span>
-<span class="nc" id="L192">        this.totalFinal = 0;</span>
-<span class="nc" id="L193">        this.descuento = 0;</span>
-<span class="nc" id="L194">    }</span>
+<span class="nc bnc" id="L186" title="All 2 branches missed.">        for (Producto p : pedido.getProductos()) {</span>
+<span class="nc" id="L187">            totalNeto += p.getPrecioBase() * pedido.getCantidades().get(p.getId());</span>
+<span class="nc" id="L188">        }</span>
+<span class="nc" id="L189">        this.totalIva = 0;</span>
+<span class="nc" id="L190">        this.totalEnvio = 0;</span>
+<span class="nc" id="L191">        this.totalFinal = 0;</span>
+<span class="nc" id="L192">        this.descuento = 0;</span>
+<span class="nc" id="L193">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

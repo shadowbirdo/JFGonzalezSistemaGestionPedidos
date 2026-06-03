@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Tienda.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Sistema de Gestión de Pedidos</a> &gt; <a href="index.source.html" class="el_package">dev.jfgonzalez.gestpedidos</a> &gt; <span class="el_source">Tienda.java</span></div><h1>Tienda.java</h1><pre class="source lang-java linenums">package dev.jfgonzalez.gestpedidos;
 
-/**
- * - Método realizarVenta(Cliente c, Pedido p): Debe ser el punto de entrada que orqueste todo el flujo.
- * - Cálculo de Descuentos: Aplica la lógica de fidelidad basada en el objeto Cliente sobre el total devuelto por el objeto Pedido.
- * - Generación: Si todo es correcto, debe instanciar y devolver un objeto Factura.
- * - processSale
- */
-<span class="fc" id="L9">public class Tienda {</span>
+<span class="fc" id="L3">public class Tienda {</span>
     // Constantes
     public static final double DESCUENTO_VIP = .05;
     public static final double DESCUENTO_ANTIGUEDAD = .05;
@@ -18,7 +12,7 @@
      * @return El porcentaje de descuento a utilizar
      */
     public double calcularDescuento(Cliente cliente) {
-<span class="fc bfc" id="L21" title="All 4 branches covered.">        return (cliente.getEsVip() ? DESCUENTO_VIP : 0) + (cliente.getAnnosAntiguedad() &gt; 5 ? DESCUENTO_ANTIGUEDAD : 0);</span>
+<span class="fc bfc" id="L15" title="All 4 branches covered.">        return (cliente.getEsVip() ? DESCUENTO_VIP : 0) + (cliente.getAnnosAntiguedad() &gt; 5 ? DESCUENTO_ANTIGUEDAD : 0);</span>
     }
 
     /**
@@ -28,43 +22,43 @@
      * @return Factura resultante
      */
     public Factura realizarVenta(Cliente cliente, Pedido pedido) {
-<span class="fc bfc" id="L31" title="All 2 branches covered.">        if (pedido.getCliente() != cliente) throw new IllegalArgumentException(&quot;El cliente no coincide&quot;);</span>
-<span class="pc bpc" id="L32" title="1 of 6 branches missed.">        if (cliente.getPais() == null || cliente.getPais().isBlank() || cliente.getPais().isEmpty()) throw new IllegalArgumentException(&quot;El atributo país está vacío&quot;);</span>
-<span class="fc bfc" id="L33" title="All 2 branches covered.">        if (pedido.getProductos().isEmpty()) throw new IllegalArgumentException(Pedido.PRODUCT_LIST_EMPTY_EXCEPTION_MESSAGE);</span>
+<span class="fc bfc" id="L25" title="All 2 branches covered.">        if (pedido.getCliente() != cliente) throw new IllegalArgumentException(&quot;El cliente no coincide&quot;);</span>
+<span class="pc bpc" id="L26" title="1 of 6 branches missed.">        if (cliente.getPais() == null || cliente.getPais().isBlank() || cliente.getPais().isEmpty()) throw new IllegalArgumentException(&quot;El atributo país está vacío&quot;);</span>
+<span class="fc bfc" id="L27" title="All 2 branches covered.">        if (pedido.getProductos().isEmpty()) throw new IllegalArgumentException(Pedido.PRODUCT_LIST_EMPTY_EXCEPTION_MESSAGE);</span>
 
-<span class="fc" id="L35">        double totalNeto = 0;</span>
-<span class="fc bfc" id="L36" title="All 2 branches covered.">        for (Producto p : pedido.getProductos()) {</span>
-<span class="fc" id="L37">            int cantidad = pedido.getCantidades().getOrDefault(p.getId(), 1);</span>
-<span class="fc" id="L38">            totalNeto += p.getPrecioBase() * cantidad;</span>
-<span class="fc" id="L39">        }</span>
+<span class="fc" id="L29">        double totalNeto = 0;</span>
+<span class="fc bfc" id="L30" title="All 2 branches covered.">        for (Producto p : pedido.getProductos()) {</span>
+<span class="fc" id="L31">            int cantidad = pedido.getCantidades().getOrDefault(p.getId(), 1);</span>
+<span class="fc" id="L32">            totalNeto += p.getPrecioBase() * cantidad;</span>
+<span class="fc" id="L33">        }</span>
         
-<span class="fc" id="L41">        boolean soloDigitales = pedido.getProductos().stream().allMatch(p -&gt; p instanceof ProductoDigital);</span>
-<span class="pc bpc" id="L42" title="1 of 2 branches missed.">        double totalEnvio = soloDigitales ? 0 : pedido.calcularEnvio(cliente.getPais());</span>
-<span class="fc" id="L43">        boolean tieneFisicos = pedido.getProductos().stream().anyMatch(p -&gt; p instanceof ProductoFisico);</span>
-<span class="fc bfc" id="L44" title="All 2 branches covered.">        if (!tieneFisicos) {</span>
-<span class="fc" id="L45">            totalEnvio = 0;</span>
+<span class="fc" id="L35">        boolean soloDigitales = pedido.getProductos().stream().allMatch(ProductoDigital.class::isInstance);</span>
+<span class="pc bpc" id="L36" title="1 of 2 branches missed.">        double totalEnvio = soloDigitales ? 0 : pedido.calcularEnvio(cliente.getPais());</span>
+<span class="fc" id="L37">        boolean tieneFisicos = pedido.getProductos().stream().anyMatch(ProductoFisico.class::isInstance);</span>
+<span class="fc bfc" id="L38" title="All 2 branches covered.">        if (!tieneFisicos) {</span>
+<span class="fc" id="L39">            totalEnvio = 0;</span>
         }
 
-<span class="fc" id="L48">        double totalIva = pedido.calcularIva(&quot;GENERAL&quot;);</span>
+<span class="fc" id="L42">        double totalIva = pedido.calcularIva(&quot;GENERAL&quot;);</span>
 
-<span class="fc" id="L50">        double totalBruto = totalNeto + totalIva + totalEnvio;</span>
+<span class="fc" id="L44">        double totalBruto = totalNeto + totalIva + totalEnvio;</span>
 
-<span class="fc" id="L52">        double descuentoPorcentaje = calcularDescuento(cliente);</span>
+<span class="fc" id="L46">        double descuentoPorcentaje = calcularDescuento(cliente);</span>
 
-<span class="fc" id="L54">        double descuento = totalBruto * descuentoPorcentaje;</span>
-<span class="fc" id="L55">        double totalFinal = totalBruto - descuento;</span>
+<span class="fc" id="L48">        double descuento = totalBruto * descuentoPorcentaje;</span>
+<span class="fc" id="L49">        double totalFinal = totalBruto - descuento;</span>
 
-<span class="fc" id="L57">        Factura factura = new Factura();</span>
-<span class="fc" id="L58">        factura.setCodigoFactura(&quot;FACT-&quot; + java.time.LocalDate.now() + &quot;-&quot; + System.nanoTime());</span>
-<span class="fc" id="L59">        factura.setFechaEmision(java.time.LocalDate.now());</span>
+<span class="fc" id="L51">        Factura factura = new Factura();</span>
+<span class="fc" id="L52">        factura.setCodigoFactura(&quot;FACT-&quot; + java.time.LocalDate.now() + &quot;-&quot; + System.nanoTime());</span>
+<span class="fc" id="L53">        factura.setFechaEmision(java.time.LocalDate.now());</span>
         
-<span class="fc" id="L61">        factura.setTotalNeto(totalNeto);</span>
-<span class="fc" id="L62">        factura.setTotalIva(totalIva);</span>
-<span class="fc" id="L63">        factura.setTotalEnvio(totalEnvio);</span>
-<span class="fc" id="L64">        factura.setDescuento(descuento);</span>
-<span class="fc" id="L65">        factura.setTotalFinal(totalFinal);</span>
+<span class="fc" id="L55">        factura.setTotalNeto(totalNeto);</span>
+<span class="fc" id="L56">        factura.setTotalIva(totalIva);</span>
+<span class="fc" id="L57">        factura.setTotalEnvio(totalEnvio);</span>
+<span class="fc" id="L58">        factura.setDescuento(descuento);</span>
+<span class="fc" id="L59">        factura.setTotalFinal(totalFinal);</span>
         
-<span class="fc" id="L67">        return factura;</span>
+<span class="fc" id="L61">        return factura;</span>
     }
 
 }

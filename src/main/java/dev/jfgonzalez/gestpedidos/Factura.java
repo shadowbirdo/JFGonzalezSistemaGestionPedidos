@@ -132,34 +132,33 @@ public class Factura {
      */
     public String generarFactura(Pedido pedido){
         StringBuilder factura = new StringBuilder();
-        //calcularFactura(pedido);
-        factura.append("---%s---\n".formatted(this.codigoFactura));
-        factura.append("==========\n");
+        factura.append("---%s---%n".formatted(this.codigoFactura));
+        factura.append("==========%n");
         for (Producto p : pedido.getProductos()) {
             int cantidad = pedido.getCantidades().get(p.getId());
             String nombre = p.getNombre();
             double precioFinal = p.calcularPrecioFinal();
-            factura.append("%d - %s - %.2f€\n".formatted(cantidad,nombre,precioFinal));
+            factura.append("%d - %s - %.2f€%n".formatted(cantidad,nombre,precioFinal));
         }
-        factura.append("==========\n");
-        factura.append("Total neto: %.2f€\n".formatted(totalNeto));
-        factura.append("IVA: %.2f€\n".formatted(totalIva));
-        factura.append("Envío: %.2f€\n".formatted(totalEnvio));
-        factura.append("Descuento: %.2f€\n".formatted(descuento));
+        factura.append("==========%n");
+        factura.append("Total neto: %.2f€%n".formatted(totalNeto));
+        factura.append("IVA: %.2f€%n".formatted(totalIva));
+        factura.append("Envío: %.2f€%n".formatted(totalEnvio));
+        factura.append("Descuento: %.2f€%n".formatted(descuento));
         factura.append("----------");
-        factura.append("Total final: %.2f€\n".formatted(totalFinal));
+        factura.append("Total final: %.2f€%n".formatted(totalFinal));
 
         return factura.toString();
     }
 
     @Override
     public String toString() {
-        return "Factura: " + codigoFactura + "\n" +
-               "Fecha de emision: " + fechaEmision + "\n" +
-               "Total neto: " + totalNeto + "\n" +
-               "Total IVA: " + totalIva + "\n" +
-               "Total envio: " + totalEnvio + "\n" +
-               "Descuento: " + descuento + "\n" +
+        return "Factura: " + codigoFactura + "%n" +
+               "Fecha de emision: " + fechaEmision + "%n" +
+               "Total neto: " + totalNeto + "%n" +
+               "Total IVA: " + totalIva + "%n" +
+               "Total envio: " + totalEnvio + "%n" +
+               "Descuento: " + descuento + "%n" +
                "Total final: " + totalFinal;
     }
 

@@ -6,7 +6,7 @@ package dev.jfgonzalez.gestpedidos;
  */
 public class Producto {
     // Constantes
-    public final static String NEGATIVE_PRICE_EXCEPTION_MESSAGE = "Attempt to assign negative int to basePrice. basePrice cannot be negative.";
+    public static final String NEGATIVE_PRICE_EXCEPTION_MESSAGE = "Attempt to assign negative int to basePrice. basePrice cannot be negative.";
 
     // Atributos
     private int id;
@@ -58,7 +58,7 @@ public class Producto {
      */
     public double calcularPrecioFinal() {
         return getPrecioBase();
-    };
+    }
 
     @Override
     public String toString(){

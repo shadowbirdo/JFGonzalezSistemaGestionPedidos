@@ -2,5 +2,5 @@ projectKey=jfgonzalez-sistemagestionpedidos
 serverUrl=http://localhost:9000
 serverVersion=26.3.0.120487
 dashboardUrl=http://localhost:9000/dashboard?id=jfgonzalez-sistemagestionpedidos
-ceTaskId=b790852e-1835-4095-8cf2-e5131422a65d
-ceTaskUrl=http://localhost:9000/api/ce/task?id=b790852e-1835-4095-8cf2-e5131422a65d
+ceTaskId=98303d50-0ecb-46f3-93ee-087b4bcf2f4c
+ceTaskUrl=http://localhost:9000/api/ce/task?id=98303d50-0ecb-46f3-93ee-087b4bcf2f4c

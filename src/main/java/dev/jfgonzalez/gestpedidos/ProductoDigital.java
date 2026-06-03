@@ -5,7 +5,7 @@ package dev.jfgonzalez.gestpedidos;
  */
 public class ProductoDigital extends Producto{
     // Constantes
-    public final static String INVALID_IVA_EXCEPTION_MESSAGE = "IVA type not valid. Valid types are GENERAL, REDUCIDO and SUPER.";
+    public static final String INVALID_IVA_EXCEPTION_MESSAGE = "IVA type not valid. Valid types are GENERAL, REDUCIDO and SUPER.";
 
     public static final double IVA_GENERAL = .21;
     public static final double IVA_REDUCIDO = .10;

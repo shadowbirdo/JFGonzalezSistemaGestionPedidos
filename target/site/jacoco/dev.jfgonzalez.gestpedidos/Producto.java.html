@@ -6,7 +6,7 @@
  */
 public class Producto {
     // Constantes
-    public final static String NEGATIVE_PRICE_EXCEPTION_MESSAGE = &quot;Attempt to assign negative int to basePrice. basePrice cannot be negative.&quot;;
+    public static final String NEGATIVE_PRICE_EXCEPTION_MESSAGE = &quot;Attempt to assign negative int to basePrice. basePrice cannot be negative.&quot;;
 
     // Atributos
     private int id;
@@ -58,7 +58,7 @@ public class Producto {
      */
     public double calcularPrecioFinal() {
 <span class="nc" id="L60">        return getPrecioBase();</span>
-    };
+    }
 
     @Override
     public String toString(){

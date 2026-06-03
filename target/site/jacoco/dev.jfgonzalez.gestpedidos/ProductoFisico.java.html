@@ -59,21 +59,19 @@ public class ProductoFisico extends Producto{
 <span class="nc bnc" id="L59" title="All 3 branches missed.">        switch (zonaDestino.toLowerCase()) {</span>
             case &quot;españa&quot;:
 <span class="nc" id="L61">                return ENVIO_NACIONAL;</span>
-            case &quot;francia&quot;:
-            case &quot;italia&quot;:
-            case &quot;portugal&quot;:
-<span class="nc" id="L65">                return ENVIO_VECINO;</span>
+            case &quot;francia&quot;,&quot;italia&quot;,&quot;portugal&quot;:
+<span class="nc" id="L63">                return ENVIO_VECINO;</span>
             default:
-<span class="nc" id="L67">                return ENVIO_OTRO;</span>
+<span class="nc" id="L65">                return ENVIO_OTRO;</span>
         }
     }
 
     @Override
     public String toString(){
-<span class="nc" id="L73">        String superToString = super.toString();</span>
-<span class="nc" id="L74">        return &quot;%s,\&quot;weight\&quot;:\&quot;%.2f\&quot;}&quot;.formatted(</span>
-<span class="nc" id="L75">            superToString.substring(0, superToString.length()-1),</span>
-<span class="nc" id="L76">            this.peso</span>
+<span class="nc" id="L71">        String superToString = super.toString();</span>
+<span class="nc" id="L72">        return &quot;%s,\&quot;weight\&quot;:\&quot;%.2f\&quot;}&quot;.formatted(</span>
+<span class="nc" id="L73">            superToString.substring(0, superToString.length()-1),</span>
+<span class="nc" id="L74">            this.peso</span>
         );
     }
 }

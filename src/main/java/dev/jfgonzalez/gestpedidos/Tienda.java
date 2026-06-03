@@ -1,11 +1,5 @@
 package dev.jfgonzalez.gestpedidos;
 
-/**
- * - Método realizarVenta(Cliente c, Pedido p): Debe ser el punto de entrada que orqueste todo el flujo.
- * - Cálculo de Descuentos: Aplica la lógica de fidelidad basada en el objeto Cliente sobre el total devuelto por el objeto Pedido.
- * - Generación: Si todo es correcto, debe instanciar y devolver un objeto Factura.
- * - processSale
- */
 public class Tienda {
     // Constantes
     public static final double DESCUENTO_VIP = .05;
@@ -38,9 +32,9 @@ public class Tienda {
             totalNeto += p.getPrecioBase() * cantidad;
         }
         
-        boolean soloDigitales = pedido.getProductos().stream().allMatch(p -> p instanceof ProductoDigital);
+        boolean soloDigitales = pedido.getProductos().stream().allMatch(ProductoDigital.class::isInstance);
         double totalEnvio = soloDigitales ? 0 : pedido.calcularEnvio(cliente.getPais());
-        boolean tieneFisicos = pedido.getProductos().stream().anyMatch(p -> p instanceof ProductoFisico);
+        boolean tieneFisicos = pedido.getProductos().stream().anyMatch(ProductoFisico.class::isInstance);
         if (!tieneFisicos) {
             totalEnvio = 0;
         }
