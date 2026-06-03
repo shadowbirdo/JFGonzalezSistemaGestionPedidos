@@ -1,9 +1,7 @@
-dev/jfgonzalez/gestpedidos/model/Cliente.class
-dev/jfgonzalez/gestpedidos/util/TableBuilder.class
-dev/jfgonzalez/gestpedidos/exceptions/Msg.class
-dev/jfgonzalez/gestpedidos/service/Tienda.class
-dev/jfgonzalez/gestpedidos/model/ProductoFisico.class
-dev/jfgonzalez/gestpedidos/model/ProductoDigital.class
-dev/jfgonzalez/gestpedidos/model/Pedido.class
-dev/jfgonzalez/gestpedidos/model/Producto.class
-dev/jfgonzalez/gestpedidos/model/Factura.class
+dev/jfgonzalez/gestpedidos/ProductoFisico.class
+dev/jfgonzalez/gestpedidos/Tienda.class
+dev/jfgonzalez/gestpedidos/ProductoDigital.class
+dev/jfgonzalez/gestpedidos/Producto.class
+dev/jfgonzalez/gestpedidos/Pedido.class
+dev/jfgonzalez/gestpedidos/Cliente.class
+dev/jfgonzalez/gestpedidos/Factura.class

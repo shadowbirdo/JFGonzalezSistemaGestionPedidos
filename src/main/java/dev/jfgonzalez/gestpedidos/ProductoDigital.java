@@ -22,14 +22,14 @@ public class ProductoDigital extends Producto{
      * @param id - Identificador único
      * @param name - Nombre
      * @param precioBase - Precio base del producto
-     * @param license - Licencia del producto digital
+     * @param licencia - Licencia del producto digital
      * @param pesoEnMB - Peso en megabytes del producto
      */
     public ProductoDigital(
-        int id, String name, double precioBase, String license, double pesoEnMB, double iva
+        int id, String name, double precioBase, String licencia, double pesoEnMB, double iva
     ){
         super(id, name, precioBase);
-        this.licencia = license;
+        this.licencia = licencia;
         this.pesoEnMB = pesoEnMB;
         this.iva = iva;
     }
@@ -42,6 +42,21 @@ public class ProductoDigital extends Producto{
      */
     public ProductoDigital(int id, String nombre, double precioBase) {
         this(id, nombre, precioBase, null, 0, IVA_GENERAL);
+    }
+
+    /**
+     * Construye un ProductoDigital a partir de otro objeto del mismo tipo.
+     * @param pd - Producto a copiar
+     */
+    public ProductoDigital(ProductoDigital pd) {
+        this(
+            pd.getId(),
+            pd.getNombre(),
+            pd.getPrecioBase(),
+            pd.getLicencia(),
+            pd.getPesoEnMB(),
+            pd.getIva()
+        );
     }
 
     // Getters & Setters
@@ -63,10 +78,13 @@ public class ProductoDigital extends Producto{
         switch (tipoIva.toUpperCase()) {
             case "GENERAL":
                 this.iva = IVA_GENERAL;
+                break;
             case "REDUCIDO":
                 this.iva = IVA_REDUCIDO;
+                break;
             case "SUPER":
                 this.iva = IVA_SUPER;
+                break;
             default:
                 throw new IllegalArgumentException(INVALID_IVA_EXCEPTION_MESSAGE);
         }

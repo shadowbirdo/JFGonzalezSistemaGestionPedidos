@@ -1,9 +1,7 @@
-/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/src/main/java/dev/jfgonzalez/gestpedidos/exceptions/Msg.java
-/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/src/main/java/dev/jfgonzalez/gestpedidos/model/ProductoFisico.java
-/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/src/main/java/dev/jfgonzalez/gestpedidos/model/ProductoDigital.java
-/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/src/main/java/dev/jfgonzalez/gestpedidos/model/Cliente.java
-/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/src/main/java/dev/jfgonzalez/gestpedidos/service/Tienda.java
-/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/src/main/java/dev/jfgonzalez/gestpedidos/util/TableBuilder.java
-/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/src/main/java/dev/jfgonzalez/gestpedidos/model/Producto.java
-/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/src/main/java/dev/jfgonzalez/gestpedidos/model/Factura.java
-/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/src/main/java/dev/jfgonzalez/gestpedidos/model/Pedido.java
+/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/src/main/java/dev/jfgonzalez/gestpedidos/ProductoDigital.java
+/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/src/main/java/dev/jfgonzalez/gestpedidos/Pedido.java
+/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/src/main/java/dev/jfgonzalez/gestpedidos/Producto.java
+/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/src/main/java/dev/jfgonzalez/gestpedidos/ProductoFisico.java
+/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/src/main/java/dev/jfgonzalez/gestpedidos/Factura.java
+/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/src/main/java/dev/jfgonzalez/gestpedidos/Cliente.java
+/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/src/main/java/dev/jfgonzalez/gestpedidos/Tienda.java

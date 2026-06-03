@@ -32,6 +32,19 @@ public class ProductoFisico extends Producto{
         this(id,name,price,0);
     }
 
+    /**
+     * Construye un ProductoFisico a partir de otro objeto del mismo tipo.
+     * @param pf - Producto a copiar
+     */
+    public ProductoFisico(ProductoFisico pf) {
+        this(
+            pf.getId(),
+            pf.getNombre(),
+            pf.getPrecioBase(),
+            pf.getPeso()
+        );
+    }
+
     // Getters & Setters
     public double getPeso() {return peso;}
     public void setPeso(float peso) {this.peso = peso;}

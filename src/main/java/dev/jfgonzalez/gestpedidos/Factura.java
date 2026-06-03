@@ -1,8 +1,6 @@
 package dev.jfgonzalez.gestpedidos;
 
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Map;
 
 public class Factura {
     // Constantes
@@ -134,7 +132,7 @@ public class Factura {
      */
     public String generarFactura(Pedido pedido){
         StringBuilder factura = new StringBuilder();
-        limpiarFactura();
+        //calcularFactura(pedido);
         factura.append("---%s---\n".formatted(this.codigoFactura));
         factura.append("==========\n");
         for (Producto p : pedido.getProductos()) {
@@ -156,6 +154,20 @@ public class Factura {
 
     @Override
     public String toString() {
+        return "Factura: " + codigoFactura + "\n" +
+               "Fecha de emision: " + fechaEmision + "\n" +
+               "Total neto: " + totalNeto + "\n" +
+               "Total IVA: " + totalIva + "\n" +
+               "Total envio: " + totalEnvio + "\n" +
+               "Descuento: " + descuento + "\n" +
+               "Total final: " + totalFinal;
+    }
+
+    /**
+     * Método que pasa los datos del objeto a formato JSON.
+     * @return Cadena en formato JSON
+     */
+    public String toJson() {
         return "{\"codigoFactura\":\"%s\",\"fechaEmision\":\"%s\",\"totalNeto\":\"%.2f\",\"totalIva\":\"%.2f\",\"totalEnvio\":\"%.2f\",\"totalFinal\":\"%.2f\",\"descuento\":\"%.2f\"}".formatted(
             this.codigoFactura, 
             this.fechaEmision, 
@@ -172,18 +184,9 @@ public class Factura {
      * @param pedido - Pedido con el que se está trabajando
      */
     public void calcularFactura(Pedido pedido) {
-        this.totalNeto = 0;
-        this.totalIva = 0;
-        this.totalEnvio = 0;
-        this.totalFinal = 0;
-        this.descuento = 0;
-    }
-
-    /**
-     * Método auxiliar que limpia todos los atributos de la factura excepto fechaEmision y codigoFactura.
-     */
-    public void limpiarFactura() {
-        this.totalNeto = 0;
+        for (Producto p : pedido.getProductos()) {
+            totalNeto += p.getPrecioBase() * pedido.getCantidades().get(p.getId());
+        }
         this.totalIva = 0;
         this.totalEnvio = 0;
         this.totalFinal = 0;

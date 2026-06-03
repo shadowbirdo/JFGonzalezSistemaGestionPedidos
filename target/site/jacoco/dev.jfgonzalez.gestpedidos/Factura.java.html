@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Factura.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Sistema de Gestión de Pedidos</a> &gt; <a href="index.source.html" class="el_package">dev.jfgonzalez.gestpedidos</a> &gt; <span class="el_source">Factura.java</span></div><h1>Factura.java</h1><pre class="source lang-java linenums">package dev.jfgonzalez.gestpedidos;
+
+import java.time.LocalDate;
+
+public class Factura {
+    // Constantes
+<span class="fc" id="L7">    private static int idCounter = 1;</span>
+
+    // Atributos
+    private String codigoFactura;
+    private LocalDate fechaEmision;
+    private double totalNeto;
+    private double totalIva;
+    private double totalEnvio;
+    private double totalFinal;
+    private double descuento;
+
+    // Constructores
+    /**
+     * Construye una Factura usando los parámetros indicados.
+     * @param codigoFactura - Identificador único
+     * @param fechaEmision - Fecha en la que genera la factura
+     * @param totalNeto - Coste total antes de aplicar IVA, envío y descuento
+     * @param totalIva - Importe adicional a los productos digitales
+     * @param totalEnvio - Importe adicional en caso de tener productos físicos
+     * @param totalFinal - Coste total del pedido
+     * @param descuento - Descuento aplicable por tipo de membresía (VIP) y antigüedad
+     */
+    public Factura(
+        String codigoFactura, LocalDate fechaEmision, double totalNeto,
+        double totalIva, double totalEnvio, double totalFinal, double descuento
+<span class="fc" id="L32">    ) {</span>
+<span class="fc" id="L33">        this.codigoFactura = codigoFactura;</span>
+<span class="fc" id="L34">        this.fechaEmision = fechaEmision;</span>
+<span class="fc" id="L35">        this.totalNeto = totalNeto;</span>
+<span class="fc" id="L36">        this.totalIva = totalIva;</span>
+<span class="fc" id="L37">        this.totalEnvio = totalEnvio;</span>
+<span class="fc" id="L38">        this.totalFinal = totalFinal;</span>
+<span class="fc" id="L39">        this.descuento = descuento;</span>
+<span class="fc" id="L40">    }</span>
+
+    /**
+     * Construye una Factura usando los parámetros indicados. &quot;totalFinal&quot; es calculado sumando &quot;totalNeto&quot;, &quot;totalEnvio&quot;, &quot;totalIva&quot; y restando &quot;descuento&quot;.
+     * @param codigoFactura - Identificador único
+     * @param fechaEmision - Fecha en la que genera la factura
+     * @param totalNeto - Coste total antes de aplicar IVA, envío y descuento
+     * @param totalIva - Importe adicional a los productos digitales
+     * @param totalEnvio - Importe adicional en caso de tener productos físicos
+     * @param descuento - Descuento aplicable por tipo de membresía (VIP) y antigüedad
+     */
+    public Factura(
+        String codigoFactura, LocalDate fechaEmision, double totalNeto,
+        double totalIva, double totalEnvio, double descuento
+    ) {
+<span class="fc" id="L55">        this(</span>
+            codigoFactura,
+            fechaEmision,
+            totalNeto,
+            totalIva,
+            totalEnvio,
+            totalNeto + totalEnvio + totalIva - descuento,
+            descuento
+        );
+<span class="fc" id="L64">    }</span>
+
+    /**
+     * Construye una Factura usando los parámetros indicados. &quot;fechaEmision&quot; es LocalDate.now() y &quot;descuento&quot; es 0.
+     * @param codigoFactura - Identificador único
+     * @param totalNeto - Coste total antes de aplicar IVA, envío y descuento
+     * @param totalIva - Importe adicional a los productos digitales
+     * @param totalEnvio - Importe adicional en caso de tener productos físicos
+     * @param totalFinal - Coste total del pedido
+     */
+    public Factura(String codigoFactura, double totalNeto, double totalIva, double totalEnvio, double totalFinal) {
+<span class="fc" id="L75">        this(</span>
+            codigoFactura,
+<span class="fc" id="L77">            LocalDate.now(),</span>
+            totalNeto,
+            totalIva,
+            totalEnvio,
+            0
+        );
+<span class="fc" id="L83">    }</span>
+
+    /**
+     * Construye una Factura usando los parámetros indicados. &quot;codigoFactura&quot; es genId(), &quot;fechaEmision&quot; es LocalDate.now() y &quot;descuento&quot; es 0.
+     * @param netTotal
+     * @param totalIva
+     * @param totalShipping
+     * @param finalTotal
+     */
+    public Factura(float netTotal, float totalIva, float totalShipping, float finalTotal) {
+<span class="nc" id="L93">        this(genId(),LocalDate.now(),netTotal,totalIva,totalShipping,finalTotal,0);</span>
+<span class="nc" id="L94">    }</span>
+
+    /**
+     * Construye una Factura vacía con &quot;codigoFactura&quot; generado automáticamente.
+     */
+    public Factura() {
+<span class="fc" id="L100">        this(genId(),0,0,0,0);</span>
+<span class="fc" id="L101">    }</span>
+
+    // Getters &amp; Setters
+<span class="fc" id="L104">    public String getCodigoFactura() {return codigoFactura;}</span>
+<span class="fc" id="L105">    public void setCodigoFactura(String codigoFactura) {this.codigoFactura = codigoFactura;}</span>
+<span class="fc" id="L106">    public LocalDate getFechaEmision() {return fechaEmision;}</span>
+<span class="fc" id="L107">    public void setFechaEmision(LocalDate fechaEmision) {this.fechaEmision = fechaEmision;}</span>
+<span class="fc" id="L108">    public double getTotalNeto() {return totalNeto;}</span>
+<span class="fc" id="L109">    public void setTotalNeto(double totalNeto) {this.totalNeto = totalNeto;}</span>
+<span class="fc" id="L110">    public double getTotalIva() {return totalIva;}</span>
+<span class="fc" id="L111">    public void setTotalIva(double totalIva) {this.totalIva = totalIva;}</span>
+<span class="fc" id="L112">    public double getTotalEnvio() {return totalEnvio;}</span>
+<span class="fc" id="L113">    public void setTotalEnvio(double totalEnvio) {this.totalEnvio = totalEnvio;}</span>
+<span class="fc" id="L114">    public double getTotalFinal() {return totalFinal;}</span>
+<span class="fc" id="L115">    public void setTotalFinal(double totalFinal) {this.totalFinal = totalFinal;}</span>
+<span class="fc" id="L116">    public double getDescuento() {return descuento;}</span>
+<span class="fc" id="L117">    public void setDescuento(double descuento) {this.descuento = descuento;}</span>
+
+    // Métodos
+    /**
+     * Método para generación de &quot;códigoFactura&quot;.
+     * @return Identificador único con formato &quot;FACT-{LocalDate.now()}-N&quot;, siendo N un contador interno de la clase
+     */
+    private static String genId() {
+<span class="fc" id="L125">        return &quot;FACT-%s-%d&quot;.formatted(LocalDate.now(),idCounter++);</span>
+    }
+
+    /**
+     * Genera una Factura a partir de un Pedido. Incluir un desglose detallado donde se ve claramente cuánto se ha pagado por cada concepto (IVA, envío y descuentos aplicados).
+     * @param pedido - El pedido del que se obtendrán los datos que usará la factura
+     * @return Vista de la factura en forma de String 
+     */
+    public String generarFactura(Pedido pedido){
+<span class="nc" id="L134">        StringBuilder factura = new StringBuilder();</span>
+        //calcularFactura(pedido);
+<span class="nc" id="L136">        factura.append(&quot;---%s---\n&quot;.formatted(this.codigoFactura));</span>
+<span class="nc" id="L137">        factura.append(&quot;==========\n&quot;);</span>
+<span class="nc bnc" id="L138" title="All 2 branches missed.">        for (Producto p : pedido.getProductos()) {</span>
+<span class="nc" id="L139">            int cantidad = pedido.getCantidades().get(p.getId());</span>
+<span class="nc" id="L140">            String nombre = p.getNombre();</span>
+<span class="nc" id="L141">            double precioFinal = p.calcularPrecioFinal();</span>
+<span class="nc" id="L142">            factura.append(&quot;%d - %s - %.2f€\n&quot;.formatted(cantidad,nombre,precioFinal));</span>
+<span class="nc" id="L143">        }</span>
+<span class="nc" id="L144">        factura.append(&quot;==========\n&quot;);</span>
+<span class="nc" id="L145">        factura.append(&quot;Total neto: %.2f€\n&quot;.formatted(totalNeto));</span>
+<span class="nc" id="L146">        factura.append(&quot;IVA: %.2f€\n&quot;.formatted(totalIva));</span>
+<span class="nc" id="L147">        factura.append(&quot;Envío: %.2f€\n&quot;.formatted(totalEnvio));</span>
+<span class="nc" id="L148">        factura.append(&quot;Descuento: %.2f€\n&quot;.formatted(descuento));</span>
+<span class="nc" id="L149">        factura.append(&quot;----------&quot;);</span>
+<span class="nc" id="L150">        factura.append(&quot;Total final: %.2f€\n&quot;.formatted(totalFinal));</span>
+
+<span class="nc" id="L152">        return factura.toString();</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="fc" id="L157">        return &quot;Factura: &quot; + codigoFactura + &quot;\n&quot; +</span>
+               &quot;Fecha de emision: &quot; + fechaEmision + &quot;\n&quot; +
+               &quot;Total neto: &quot; + totalNeto + &quot;\n&quot; +
+               &quot;Total IVA: &quot; + totalIva + &quot;\n&quot; +
+               &quot;Total envio: &quot; + totalEnvio + &quot;\n&quot; +
+               &quot;Descuento: &quot; + descuento + &quot;\n&quot; +
+               &quot;Total final: &quot; + totalFinal;
+    }
+
+    /**
+     * Método que pasa los datos del objeto a formato JSON.
+     * @return Cadena en formato JSON
+     */
+    public String toJson() {
+<span class="nc" id="L171">        return &quot;{\&quot;codigoFactura\&quot;:\&quot;%s\&quot;,\&quot;fechaEmision\&quot;:\&quot;%s\&quot;,\&quot;totalNeto\&quot;:\&quot;%.2f\&quot;,\&quot;totalIva\&quot;:\&quot;%.2f\&quot;,\&quot;totalEnvio\&quot;:\&quot;%.2f\&quot;,\&quot;totalFinal\&quot;:\&quot;%.2f\&quot;,\&quot;descuento\&quot;:\&quot;%.2f\&quot;}&quot;.formatted(</span>
+            this.codigoFactura, 
+            this.fechaEmision, 
+<span class="nc" id="L174">            this.totalNeto, </span>
+<span class="nc" id="L175">            this.totalIva, </span>
+<span class="nc" id="L176">            this.totalEnvio, </span>
+<span class="nc" id="L177">            this.totalFinal, </span>
+<span class="nc" id="L178">            this.descuento</span>
+        );
+    }
+
+    /**
+     * Método auxiliar que calcula todos los totales de la factura.
+     * @param pedido - Pedido con el que se está trabajando
+     */
+    public void calcularFactura(Pedido pedido) {
+<span class="nc bnc" id="L187" title="All 2 branches missed.">        for (Producto p : pedido.getProductos()) {</span>
+<span class="nc" id="L188">            totalNeto += p.getPrecioBase() * pedido.getCantidades().get(p.getId());</span>
+<span class="nc" id="L189">        }</span>
+<span class="nc" id="L190">        this.totalIva = 0;</span>
+<span class="nc" id="L191">        this.totalEnvio = 0;</span>
+<span class="nc" id="L192">        this.totalFinal = 0;</span>
+<span class="nc" id="L193">        this.descuento = 0;</span>
+<span class="nc" id="L194">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

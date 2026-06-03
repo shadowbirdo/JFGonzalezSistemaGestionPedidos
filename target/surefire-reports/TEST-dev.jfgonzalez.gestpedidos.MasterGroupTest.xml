@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.146" tests="24" errors="6" skipped="0" failures="7">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.205" tests="24" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="25"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -13,7 +13,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/jdk-25.0.2-oracle-x64/lib"/>
-    <property name="sun.java.command" value="/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/target/surefire/surefirebooter-20260603160957943_3.jar /home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/target/surefire 2026-06-03T16-09-57_895-jvmRun1 surefire-20260603160957943_1tmp surefire_0-20260603160957943_2tmp"/>
+    <property name="sun.java.command" value="/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/target/surefire/surefirebooter-20260603185557805_3.jar /home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/target/surefire 2026-06-03T18-55-57_750-jvmRun1 surefire-20260603185557805_1tmp surefire_0-20260603185557805_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/target/test-classes:/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/target/classes:/home/shadow_birdo/.m2/repository/org/junit/jupiter/junit-jupiter/6.0.3/junit-jupiter-6.0.3.jar:/home/shadow_birdo/.m2/repository/org/junit/jupiter/junit-jupiter-api/6.0.3/junit-jupiter-api-6.0.3.jar:/home/shadow_birdo/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/shadow_birdo/.m2/repository/org/junit/platform/junit-platform-commons/6.0.3/junit-platform-commons-6.0.3.jar:/home/shadow_birdo/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/shadow_birdo/.m2/repository/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/home/shadow_birdo/.m2/repository/org/junit/jupiter/junit-jupiter-params/6.0.3/junit-jupiter-params-6.0.3.jar:/home/shadow_birdo/.m2/repository/org/junit/jupiter/junit-jupiter-engine/6.0.3/junit-jupiter-engine-6.0.3.jar:/home/shadow_birdo/.m2/repository/org/junit/platform/junit-platform-engine/6.0.3/junit-platform-engine-6.0.3.jar:/home/shadow_birdo/.m2/repository/com/jakewharton/picnic/picnic-jvm/0.7.0/picnic-jvm-0.7.0.jar:/home/shadow_birdo/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-jdk8/1.9.10/kotlin-stdlib-jdk8-1.9.10.jar:/home/shadow_birdo/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib/1.9.10/kotlin-stdlib-1.9.10.jar:/home/shadow_birdo/.m2/repository/org/jetbrains/annotations/13.0/annotations-13.0.jar:/home/shadow_birdo/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-jdk7/1.9.10/kotlin-stdlib-jdk7-1.9.10.jar:/home/shadow_birdo/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-common/1.9.10/kotlin-stdlib-common-1.9.10.jar:/home/shadow_birdo/.m2/repository/com/jakewharton/crossword/crossword-jvm/0.3.0/crossword-jvm-0.3.0.jar:/home/shadow_birdo/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.21.3/jackson-databind-2.21.3.jar:/home/shadow_birdo/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.21/jackson-annotations-2.21.jar:/home/shadow_birdo/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.21.3/jackson-core-2.21.3.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -28,7 +28,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="surefire.real.class.path" value="/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/target/surefire/surefirebooter-20260603160957943_3.jar"/>
+    <property name="surefire.real.class.path" value="/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/target/surefire/surefirebooter-20260603185557805_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="25.0.2+10-LTS-69"/>
     <property name="user.name" value="shadow_birdo"/>
@@ -55,161 +55,28 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="69.0"/>
   </properties>
-  <testcase name="testPedidoNoDebeCompartirListaExterna" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.001"/>
-  <testcase name="testCalcularEnvioSoloDigitalDebeSerCero" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.001"/>
-  <testcase name="testRealizarVentaSoloFisicoSinIvaDigital" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.033">
-    <error message="f != java.lang.Integer" type="java.util.IllegalFormatConversionException"><![CDATA[java.util.IllegalFormatConversionException: f != java.lang.Integer
-	at java.base/java.util.Formatter$FormatSpecifier.failConversion(Formatter.java:4662)
-	at java.base/java.util.Formatter$FormatSpecifier.printFloat(Formatter.java:3213)
-	at java.base/java.util.Formatter$FormatSpecifier.print(Formatter.java:3161)
-	at java.base/java.util.Formatter.format(Formatter.java:2761)
-	at java.base/java.util.Formatter.format(Formatter.java:2698)
-	at java.base/java.lang.String.formatted(String.java:4517)
-	at dev.jfgonzalez.gestpedidos.model.Factura.generarFactura(Factura.java:165)
-	at dev.jfgonzalez.gestpedidos.service.Tienda.realizarVenta(Tienda.java:27)
-	at dev.jfgonzalez.gestpedidos.MasterGroupTest.testRealizarVentaSoloFisicoSinIvaDigital(MasterGroupTest.java:112)
-]]></error>
-  </testcase>
+  <testcase name="testPedidoNoDebeCompartirListaExterna" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.032"/>
+  <testcase name="testCalcularEnvioSoloDigitalDebeSerCero" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.009"/>
+  <testcase name="testRealizarVentaSoloFisicoSinIvaDigital" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.037"/>
   <testcase name="testGettersDePedidoNoDeberianPermitirMutacionExterna" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.001"/>
-  <testcase name="testCalcularIvaConTiposAlternativos(String, double)[1]" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.004">
-    <failure message="El IVA calculado deberia coincidir con el tipo de IVA solicitado para los productos digitales ==&gt; expected: &lt;5.0&gt; but was: &lt;0.0&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: El IVA calculado deberia coincidir con el tipo de IVA solicitado para los productos digitales ==> expected: <5.0> but was: <0.0>
-	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:158)
-	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:139)
-	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:201)
-	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:72)
-	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:964)
-	at dev.jfgonzalez.gestpedidos.MasterGroupTest.testCalcularIvaConTiposAlternativos(MasterGroupTest.java:291)
-]]></failure>
-  </testcase>
-  <testcase name="testCalcularIvaConTiposAlternativos(String, double)[2]" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.001">
-    <failure message="El IVA calculado deberia coincidir con el tipo de IVA solicitado para los productos digitales ==&gt; expected: &lt;2.0&gt; but was: &lt;0.0&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: El IVA calculado deberia coincidir con el tipo de IVA solicitado para los productos digitales ==> expected: <2.0> but was: <0.0>
-	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:158)
-	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:139)
-	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:201)
-	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:72)
-	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:964)
-	at dev.jfgonzalez.gestpedidos.MasterGroupTest.testCalcularIvaConTiposAlternativos(MasterGroupTest.java:291)
-]]></failure>
-  </testcase>
+  <testcase name="testCalcularIvaConTiposAlternativos(String, double)[1]" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.017"/>
+  <testcase name="testCalcularIvaConTiposAlternativos(String, double)[2]" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.001"/>
   <testcase name="testPedidoNoDebeCompartirMapaExterno" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.001"/>
   <testcase name="testPedidoDebePermitirCreacionConColeccionesIniciales" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.001"/>
-  <testcase name="testFacturaSettersYGetters" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.0"/>
-  <testcase name="testPedidoCreadoConColeccionesDebeFallarSiFaltaCantidad" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.001">
-    <failure message="La creacion del pedido deberia fallar si falta la cantidad de alguno de los productos ==&gt; Expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown." type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: La creacion del pedido deberia fallar si falta la cantidad de alguno de los productos ==> Expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown.
-	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:159)
-	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:74)
-	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:40)
-	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3249)
-	at dev.jfgonzalez.gestpedidos.MasterGroupTest.testPedidoCreadoConColeccionesDebeFallarSiFaltaCantidad(MasterGroupTest.java:208)
-]]></failure>
-  </testcase>
-  <testcase name="testRealizarVentaSoloProductosGenericosEnPortugalSinEnvio" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.0">
-    <error message="f != java.lang.Integer" type="java.util.IllegalFormatConversionException"><![CDATA[java.util.IllegalFormatConversionException: f != java.lang.Integer
-	at java.base/java.util.Formatter$FormatSpecifier.failConversion(Formatter.java:4662)
-	at java.base/java.util.Formatter$FormatSpecifier.printFloat(Formatter.java:3213)
-	at java.base/java.util.Formatter$FormatSpecifier.print(Formatter.java:3161)
-	at java.base/java.util.Formatter.format(Formatter.java:2761)
-	at java.base/java.util.Formatter.format(Formatter.java:2698)
-	at java.base/java.lang.String.formatted(String.java:4517)
-	at dev.jfgonzalez.gestpedidos.model.Factura.generarFactura(Factura.java:165)
-	at dev.jfgonzalez.gestpedidos.service.Tienda.realizarVenta(Tienda.java:27)
-	at dev.jfgonzalez.gestpedidos.MasterGroupTest.testRealizarVentaSoloProductosGenericosEnPortugalSinEnvio(MasterGroupTest.java:150)
-]]></error>
-  </testcase>
-  <testcase name="testRealizarVentaSoloProductosGenericosSinEnvioNiIva" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.001">
-    <error message="f != java.lang.Integer" type="java.util.IllegalFormatConversionException"><![CDATA[java.util.IllegalFormatConversionException: f != java.lang.Integer
-	at java.base/java.util.Formatter$FormatSpecifier.failConversion(Formatter.java:4662)
-	at java.base/java.util.Formatter$FormatSpecifier.printFloat(Formatter.java:3213)
-	at java.base/java.util.Formatter$FormatSpecifier.print(Formatter.java:3161)
-	at java.base/java.util.Formatter.format(Formatter.java:2761)
-	at java.base/java.util.Formatter.format(Formatter.java:2698)
-	at java.base/java.lang.String.formatted(String.java:4517)
-	at dev.jfgonzalez.gestpedidos.model.Factura.generarFactura(Factura.java:165)
-	at dev.jfgonzalez.gestpedidos.service.Tienda.realizarVenta(Tienda.java:27)
-	at dev.jfgonzalez.gestpedidos.MasterGroupTest.testRealizarVentaSoloProductosGenericosSinEnvioNiIva(MasterGroupTest.java:130)
-]]></error>
-  </testcase>
-  <testcase name="testRealizarVentaConPaisVacioFalla" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.0"/>
-  <testcase name="testPedidoCreadoConColeccionesDebeCalcularTotal" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.0">
-    <failure message="El total del pedido creado con colecciones deberia sumar correctamente todos los importes ==&gt; expected: &lt;50.0&gt; but was: &lt;56.3&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: El total del pedido creado con colecciones deberia sumar correctamente todos los importes ==> expected: <50.0> but was: <56.3>
-	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:158)
-	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:139)
-	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:201)
-	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:72)
-	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:964)
-	at dev.jfgonzalez.gestpedidos.MasterGroupTest.testPedidoCreadoConColeccionesDebeCalcularTotal(MasterGroupTest.java:194)
-]]></failure>
-  </testcase>
-  <testcase name="testRealizarVentaGeneraCodigosDistintos" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.001">
-    <error message="f != java.lang.Integer" type="java.util.IllegalFormatConversionException"><![CDATA[java.util.IllegalFormatConversionException: f != java.lang.Integer
-	at java.base/java.util.Formatter$FormatSpecifier.failConversion(Formatter.java:4662)
-	at java.base/java.util.Formatter$FormatSpecifier.printFloat(Formatter.java:3213)
-	at java.base/java.util.Formatter$FormatSpecifier.print(Formatter.java:3161)
-	at java.base/java.util.Formatter.format(Formatter.java:2761)
-	at java.base/java.util.Formatter.format(Formatter.java:2698)
-	at java.base/java.lang.String.formatted(String.java:4517)
-	at dev.jfgonzalez.gestpedidos.model.Factura.generarFactura(Factura.java:165)
-	at dev.jfgonzalez.gestpedidos.service.Tienda.realizarVenta(Tienda.java:27)
-	at dev.jfgonzalez.gestpedidos.MasterGroupTest.testRealizarVentaGeneraCodigosDistintos(MasterGroupTest.java:321)
-]]></error>
-  </testcase>
-  <testcase name="testFacturaConstructorConTodosLosCampos" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.001"/>
-  <testcase name="testRealizarVentaMantieneLaIdentidadAritmetica" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.001">
-    <error message="f != java.lang.Integer" type="java.util.IllegalFormatConversionException"><![CDATA[java.util.IllegalFormatConversionException: f != java.lang.Integer
-	at java.base/java.util.Formatter$FormatSpecifier.failConversion(Formatter.java:4662)
-	at java.base/java.util.Formatter$FormatSpecifier.printFloat(Formatter.java:3213)
-	at java.base/java.util.Formatter$FormatSpecifier.print(Formatter.java:3161)
-	at java.base/java.util.Formatter.format(Formatter.java:2761)
-	at java.base/java.util.Formatter.format(Formatter.java:2698)
-	at java.base/java.lang.String.formatted(String.java:4517)
-	at dev.jfgonzalez.gestpedidos.model.Factura.generarFactura(Factura.java:165)
-	at dev.jfgonzalez.gestpedidos.service.Tienda.realizarVenta(Tienda.java:27)
-	at dev.jfgonzalez.gestpedidos.MasterGroupTest.testRealizarVentaMantieneLaIdentidadAritmetica(MasterGroupTest.java:304)
-]]></error>
-  </testcase>
+  <testcase name="testFacturaSettersYGetters" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.001"/>
+  <testcase name="testPedidoCreadoConColeccionesDebeFallarSiFaltaCantidad" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.002"/>
+  <testcase name="testRealizarVentaSoloProductosGenericosEnPortugalSinEnvio" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.001"/>
+  <testcase name="testRealizarVentaSoloProductosGenericosSinEnvioNiIva" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.001"/>
+  <testcase name="testRealizarVentaConPaisVacioFalla" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.001"/>
+  <testcase name="testPedidoCreadoConColeccionesDebeCalcularTotal" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.001"/>
+  <testcase name="testRealizarVentaGeneraCodigosDistintos" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.001"/>
+  <testcase name="testFacturaConstructorConTodosLosCampos" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.0"/>
+  <testcase name="testRealizarVentaMantieneLaIdentidadAritmetica" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.0"/>
   <testcase name="testRealizarVentaConPaisNuloFalla" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.001"/>
-  <testcase name="testFacturaToStringIncluyeContenidoEsperado" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.001">
-    <failure message="El texto de la factura deberia incluir el codigo de factura ==&gt; expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: El texto de la factura deberia incluir el codigo de factura ==> expected: <true> but was: <false>
-	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:158)
-	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:139)
-	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:69)
-	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:41)
-	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:228)
-	at dev.jfgonzalez.gestpedidos.MasterGroupTest.testFacturaToStringIncluyeContenidoEsperado(MasterGroupTest.java:392)
-]]></failure>
-  </testcase>
-  <testcase name="testCalcularEnvioSinProductosFisicos" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.001">
-    <failure message="Un pedido sin productos fisicos esta aplicando solo la tarifa base del pais ==&gt; expected: &lt;5.0&gt; but was: &lt;0.0&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Un pedido sin productos fisicos esta aplicando solo la tarifa base del pais ==> expected: <5.0> but was: <0.0>
-	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:158)
-	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:139)
-	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:201)
-	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:72)
-	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:964)
-	at dev.jfgonzalez.gestpedidos.MasterGroupTest.testCalcularEnvioSinProductosFisicos(MasterGroupTest.java:63)
-]]></failure>
-  </testcase>
-  <testcase name="testRealizarVentaConPedidoVacioFalla" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.079">
-    <failure message="Una venta con un pedido vacio deberia lanzar IllegalArgumentException ==&gt; Expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown." type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Una venta con un pedido vacio deberia lanzar IllegalArgumentException ==> Expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown.
-	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:159)
-	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:74)
-	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:40)
-	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3249)
-	at dev.jfgonzalez.gestpedidos.MasterGroupTest.testRealizarVentaConPedidoVacioFalla(MasterGroupTest.java:47)
-]]></failure>
-  </testcase>
-  <testcase name="testRealizarVentaGeneraMetadatosFactura" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.001">
-    <error message="f != java.lang.Integer" type="java.util.IllegalFormatConversionException"><![CDATA[java.util.IllegalFormatConversionException: f != java.lang.Integer
-	at java.base/java.util.Formatter$FormatSpecifier.failConversion(Formatter.java:4662)
-	at java.base/java.util.Formatter$FormatSpecifier.printFloat(Formatter.java:3213)
-	at java.base/java.util.Formatter$FormatSpecifier.print(Formatter.java:3161)
-	at java.base/java.util.Formatter.format(Formatter.java:2761)
-	at java.base/java.util.Formatter.format(Formatter.java:2698)
-	at java.base/java.lang.String.formatted(String.java:4517)
-	at dev.jfgonzalez.gestpedidos.model.Factura.generarFactura(Factura.java:165)
-	at dev.jfgonzalez.gestpedidos.service.Tienda.realizarVenta(Tienda.java:27)
-	at dev.jfgonzalez.gestpedidos.MasterGroupTest.testRealizarVentaGeneraMetadatosFactura(MasterGroupTest.java:31)
-]]></error>
-  </testcase>
-  <testcase name="testRealizarVentaConClienteDistintoAlPedidoFalla" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.001"/>
+  <testcase name="testFacturaToStringIncluyeContenidoEsperado" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.002"/>
+  <testcase name="testCalcularEnvioSinProductosFisicos" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.0"/>
+  <testcase name="testRealizarVentaConPedidoVacioFalla" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.0"/>
+  <testcase name="testRealizarVentaGeneraMetadatosFactura" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.001"/>
+  <testcase name="testRealizarVentaConClienteDistintoAlPedidoFalla" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.0"/>
   <testcase name="testCambiarIdDeProductoNoDeberiaRomperPedido" classname="dev.jfgonzalez.gestpedidos.MasterGroupTest" time="0.001"/>
 </testsuite>

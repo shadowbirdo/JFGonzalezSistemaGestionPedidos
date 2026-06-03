@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Cliente.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Sistema de Gestión de Pedidos</a> &gt; <a href="index.source.html" class="el_package">dev.jfgonzalez.gestpedidos</a> &gt; <span class="el_source">Cliente.java</span></div><h1>Cliente.java</h1><pre class="source lang-java linenums">package dev.jfgonzalez.gestpedidos;
+
+public class Cliente {
+    // Atributos
+    private int id;
+    private String nombre;
+    private String direccion;
+    private String email;
+    private int annosAntiguedad;
+    private boolean esVip;
+    private String pais;
+
+    // Constructores
+    /**
+     * Construye un Cliente con los parámetros indicados.
+     * @param id - Identificador único
+     * @param nombre - Nombre completo del cliente
+     * @param email - Correo electrónico
+     * @param direccion - Dirección de envío
+     * @param annosAntiguedad - Años de antigüedad del cliente el la tienda
+     * @param esVip - Indica si el cliente es o no es un cliente VIP
+     * @param pais - País de residencia del cliente
+     */
+<span class="fc" id="L24">    public Cliente(int id, String nombre, String email, String direccion, int annosAntiguedad, boolean esVip, String pais){</span>
+<span class="fc" id="L25">        this.id = id;</span>
+<span class="fc" id="L26">        this.nombre = nombre;</span>
+<span class="fc" id="L27">        this.email = email;</span>
+<span class="fc" id="L28">        this.direccion = direccion;</span>
+<span class="fc" id="L29">        this.annosAntiguedad = annosAntiguedad;</span>
+<span class="fc" id="L30">        this.esVip = esVip;</span>
+<span class="fc" id="L31">        this.pais = pais;</span>
+<span class="fc" id="L32">    }</span>
+
+    /**
+     * Construye un Cliente con los parámetros indicados. A &quot;email&quot; y &quot;dirección&quot; se le asignan cadenas vacías.
+     * @param id - Identificador único
+     * @param nombre - Nombre completo del cliente
+     * @param annosAntiguedad - Años de antigüedad del cliente el la tienda
+     * @param esVip - Indica si el cliente es o no es un cliente VIP
+     * @param pais - País de residencia del cliente
+     */
+    public Cliente(int id, String nombre, int annosAntiguedad, boolean esVip, String pais) {
+<span class="fc" id="L43">        this(id,nombre,&quot;&quot;,&quot;&quot;,annosAntiguedad,esVip,pais);</span>
+<span class="fc" id="L44">    }</span>
+
+    /**
+     * Construye un Cliente con los parámetros &quot;id&quot; y &quot;nombre&quot;. Por defecto el resto de parámetros son 0, false o null.
+     * @param id - Identificador único
+     * @param nombre - Nombre completo del cliente
+     */
+    public Cliente(int id, String nombre){
+<span class="nc" id="L52">        this(id,nombre,&quot;&quot;,&quot;&quot;,0,false,&quot;&quot;);</span>
+<span class="nc" id="L53">    }</span>
+
+    /**
+     * Construye un Cliente vacío.
+     */
+<span class="nc" id="L58">    public Cliente(){}</span>
+
+    // Getters &amp; Setters
+<span class="nc" id="L61">    public int getId() {return id;}</span>
+<span class="nc" id="L62">    public void setId(int id) {this.id = id;}</span>
+<span class="nc" id="L63">    public String getNombre() {return nombre;}</span>
+<span class="nc" id="L64">    public void setNombre(String nombre) {this.nombre = nombre;}</span>
+<span class="nc" id="L65">    public String getEmail() {return email;}</span>
+<span class="nc" id="L66">    public void setEmail(String email) {this.email = email;}</span>
+<span class="nc" id="L67">    public String getDireccion() {return direccion;}</span>
+<span class="nc" id="L68">    public void setDireccion(String direccion) {this.direccion = direccion;}</span>
+<span class="fc" id="L69">    public int getAnnosAntiguedad() {return annosAntiguedad;}</span>
+<span class="nc" id="L70">    public void setAnnosAntiguedad(int annosAntiguedad) {this.annosAntiguedad = annosAntiguedad;}</span>
+<span class="fc" id="L71">    public boolean getEsVip() {return esVip;}</span>
+<span class="nc" id="L72">    public void setIsVip(boolean esVip) {this.esVip = esVip;}</span>
+<span class="fc" id="L73">    public String getPais() {return pais;}</span>
+<span class="nc" id="L74">    public void setPais(String pais) {this.pais = pais;}</span>
+
+    // Métodos
+    @Override
+    public String toString(){
+<span class="nc" id="L79">        return &quot;{\&quot;id\&quot;:\&quot;%d\&quot;,\&quot;nombre\&quot;:\&quot;%s\&quot;,\&quot;direccion\&quot;:\&quot;%s\&quot;,\&quot;email\&quot;:\&quot;%s\&quot;,\&quot;annosAntiguedad\&quot;:\&quot;%d\&quot;,\&quot;esVip\&quot;:\&quot;%s\&quot;,\&quot;pais\&quot;:\&quot;%s\&quot;}&quot;.formatted(</span>
+<span class="nc" id="L80">            this.id, this.nombre, this.direccion, this.email, this.annosAntiguedad, this.esVip, this.pais</span>
+        );
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

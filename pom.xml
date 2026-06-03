@@ -6,7 +6,7 @@
 
   <groupId>dev.jfgonzalez</groupId>
   <artifactId>gestpedidos</artifactId>
-  <version>4.7-SNAPSHOT</version>
+  <version>4.8</version>
 
   <name>Sistema de Gestión de Pedidos</name>
   <url>http://www.example.com</url>

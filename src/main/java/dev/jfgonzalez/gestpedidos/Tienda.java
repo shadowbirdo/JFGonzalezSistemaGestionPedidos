@@ -28,23 +28,41 @@ public class Tienda {
      * @return Factura resultante
      */
     public Factura realizarVenta(Cliente cliente, Pedido pedido) {
-        if (pedido.getCliente() != cliente) throw new IllegalArgumentException();
+        if (pedido.getCliente() != cliente) throw new IllegalArgumentException("El cliente no coincide");
+        if (cliente.getPais() == null || cliente.getPais().isBlank() || cliente.getPais().isEmpty()) throw new IllegalArgumentException("El atributo país está vacío");
+        if (pedido.getProductos().isEmpty()) throw new IllegalArgumentException(Pedido.PRODUCT_LIST_EMPTY_EXCEPTION_MESSAGE);
 
-        if (cliente.getPais() == null || cliente.getPais().isBlank() || cliente.getPais().isEmpty()) throw new IllegalArgumentException();
-
-        if (!pedido.getProductos().stream().anyMatch(p -> p instanceof ProductoDigital)) {
-            /* Cálculo para productos físicos */
-        }
-        double totalFinal = 0;
         double totalNeto = 0;
         for (Producto p : pedido.getProductos()) {
-            totalNeto += p.getPrecioBase();
+            int cantidad = pedido.getCantidades().getOrDefault(p.getId(), 1);
+            totalNeto += p.getPrecioBase() * cantidad;
         }
+        
+        boolean soloDigitales = pedido.getProductos().stream().allMatch(p -> p instanceof ProductoDigital);
+        double totalEnvio = soloDigitales ? 0 : pedido.calcularEnvio(cliente.getPais());
+        boolean tieneFisicos = pedido.getProductos().stream().anyMatch(p -> p instanceof ProductoFisico);
+        if (!tieneFisicos) {
+            totalEnvio = 0;
+        }
+
+        double totalIva = pedido.calcularIva("GENERAL");
+
+        double totalBruto = totalNeto + totalIva + totalEnvio;
+
+        double descuentoPorcentaje = calcularDescuento(cliente);
+
+        double descuento = totalBruto * descuentoPorcentaje;
+        double totalFinal = totalBruto - descuento;
+
         Factura factura = new Factura();
+        factura.setCodigoFactura("FACT-" + java.time.LocalDate.now() + "-" + System.nanoTime());
+        factura.setFechaEmision(java.time.LocalDate.now());
+        
         factura.setTotalNeto(totalNeto);
+        factura.setTotalIva(totalIva);
+        factura.setTotalEnvio(totalEnvio);
+        factura.setDescuento(descuento);
         factura.setTotalFinal(totalFinal);
-        factura.setDescuento(pedido.calcularTotal() * (1 - calcularDescuento(cliente)));
-        factura.generarFactura(pedido);
         
         return factura;
     }

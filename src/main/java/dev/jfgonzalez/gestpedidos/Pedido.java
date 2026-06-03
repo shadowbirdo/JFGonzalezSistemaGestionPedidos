@@ -19,6 +19,7 @@ import java.util.HashMap;
 public class Pedido {
     // Constantes
     public final static String PRODUCT_LIST_EMPTY_EXCEPTION_MESSAGE = "Could not process order. Order is empty.";
+    public final static double PRECIO_POR_KILO = .1;
 
     // Atributos
     private int idPedido;
@@ -40,6 +41,11 @@ public class Pedido {
         int idPedido, Cliente cliente, String estado,
         List<Producto> productos, Map<Integer,Integer> cantidades
     ){
+        for (Producto p : productos) {
+            if (!cantidades.containsKey(p.getId())) {
+                throw new IllegalArgumentException("Falta la cantidad del producto " + p.getId());
+            }
+        }
         this.idPedido = idPedido;
         this.cliente = cliente;
         this.estado = estado;
@@ -85,7 +91,9 @@ public class Pedido {
      * @param cantidad - El número de productos a añadir, registrado en el mapa "cantidades"
      */
     public void addProducto(Producto producto, int cantidad){
-        this.productos.add(new Producto(producto));
+        if (producto instanceof ProductoDigital pd) this.productos.add(new ProductoDigital(pd));
+        else if (producto instanceof ProductoFisico pf) this.productos.add(new ProductoFisico(pf));
+        else this.productos.add(new Producto(producto));
         this.cantidades.put(producto.getId(),cantidad);
     }
 
@@ -113,17 +121,15 @@ public class Pedido {
      * @throws IllegalStateException La lista de productos no puede estar vacía.
      */
     public double calcularTotal() throws IllegalStateException{
-        if (productos.isEmpty()) throw new IllegalStateException(PRODUCT_LIST_EMPTY_EXCEPTION_MESSAGE);
+        if (productos.isEmpty()) throw new IllegalArgumentException(PRODUCT_LIST_EMPTY_EXCEPTION_MESSAGE);
         
-        double costeEnvio = 0;
-        if (productos.stream().anyMatch(p -> p instanceof ProductoFisico)) costeEnvio = ProductoFisico.costeEnvio(this.cliente.getPais());
+        double total = 0;
 
-        double precioConIva = 0;
         for(Producto p : this.productos) {
-            precioConIva += p.calcularPrecioFinal() * cantidades.get(p.getId());
+            total += p.getPrecioBase() * cantidades.getOrDefault(p.getId(),1);
         }
 
-        return precioConIva + costeEnvio;
+        return total;
     }
 
     /**
@@ -132,16 +138,24 @@ public class Pedido {
      * @return Gastos de envío del pedido
      */
     public double calcularEnvio(String pais) {
-        if (!this.productos.stream().anyMatch(prod -> prod instanceof ProductoFisico)) return 0;
+        if (this.productos.stream().allMatch(prod -> prod instanceof ProductoDigital)) return 0;
+        double envio = this.productos.stream()
+            .filter(p -> p instanceof ProductoFisico)
+            .map(p -> (ProductoFisico)p)
+            .mapToDouble(p ->
+                p.getPeso() * PRECIO_POR_KILO * cantidades.getOrDefault(p.getId(),1)
+            )
+            .sum();
+
         switch (pais.toLowerCase()) {
             case "españa":
-                return 0;
+                return envio + 0;
             case "francia":
             case "italia":
             case "portugal":
-                return 5;
+                return envio + 5;
             default:
-                return 10;
+                return envio + 10;
         }
     }
 
