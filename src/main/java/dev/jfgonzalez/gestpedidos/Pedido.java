@@ -7,15 +7,6 @@ import java.util.stream.Collectors;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/**
- * - Atributos: idPedido, Cliente, Lista de Productos, cantidades.
- * - Método calcularTotal(): Debe sumar el precio de todos los productos (con IVA aplicado) y sumar los gastos de envío.
- * - No se puede procesar un pedido si la lista de productos está vacía (lanzar excepción).
- * - Debe permitir añadir o eliminar productos dinámicamente antes del cálculo final.
- * Calcular el importe total del pedido, teniendo en cuenta, por ejemplo:
- * ○​ IVA o descuentos para productos digitales.
- * ○​ Coste de envío para productos físicos.
- */
 public class Pedido {
     // Constantes
     public static final String PRODUCT_LIST_EMPTY_EXCEPTION_MESSAGE = "Could not process order. Order is empty.";
@@ -62,7 +53,6 @@ public class Pedido {
      */
     public Pedido(int id, Cliente cliente, List<Producto> productos, Map<Integer,Integer> cantidades){
         this(id, cliente, "PENDIENTE", productos, cantidades);
-
     }
 
     /**
@@ -80,9 +70,9 @@ public class Pedido {
     public Cliente getCliente() {return cliente;}
     public void setCliente(Cliente customer) {this.cliente = customer;}
     public List<Producto> getProductos() {return new ArrayList<>(productos);}
-    public void setProductos(List<Producto> productos) {this.productos = new ArrayList<>(productos);}
+    public void setProductos(List<Producto> productos) {this.productos = productos != null ? new ArrayList<>(productos) : new ArrayList<>();}
     public Map<Integer,Integer> getCantidades() {return new HashMap<>(cantidades);}
-    public void setCantidades(Map<Integer, Integer> cantidades) {this.cantidades = new HashMap<>(cantidades);}
+    public void setCantidades(Map<Integer, Integer> cantidades) {this.cantidades = cantidades != null ? new HashMap<>(cantidades) : new HashMap<>();}
 
     // Métodos
     /**
@@ -111,7 +101,7 @@ public class Pedido {
      * Elimina un producto de la lista productos según su id.
      * @param id - Identificador único
      */
-    public void delProduct(int id){
+    public void delProducto(int id){
         if (productos.stream().noneMatch(p -> p.getId() == id) || !cantidades.containsKey(id)) throw new IllegalArgumentException();
         this.productos.removeIf(p -> p.getId() == id);
         this.cantidades.remove(id);
@@ -149,14 +139,12 @@ public class Pedido {
             )
             .sum();
 
-        switch (pais.toLowerCase()) {
-            case "españa":
-                return envio + 0;
-            case "francia","italia","portugal":
-                return envio + 5;
-            default:
-                return envio + 10;
-        }
+        return switch (pais == null ? null : pais.toLowerCase()) {
+            case "españa" -> envio + 0;
+            case "francia", "italia", "portugal" -> envio + 5;
+            case null, default -> envio + 10;
+        };
+
     }
 
     /**

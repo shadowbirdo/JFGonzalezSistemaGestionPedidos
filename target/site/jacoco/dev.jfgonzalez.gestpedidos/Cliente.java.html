@@ -49,18 +49,18 @@ public class Cliente {
      * @param nombre - Nombre completo del cliente
      */
     public Cliente(int id, String nombre){
-<span class="nc" id="L52">        this(id,nombre,&quot;&quot;,&quot;&quot;,0,false,&quot;&quot;);</span>
-<span class="nc" id="L53">    }</span>
+<span class="fc" id="L52">        this(id,nombre,&quot;&quot;,&quot;&quot;,0,false,&quot;&quot;);</span>
+<span class="fc" id="L53">    }</span>
 
     /**
      * Construye un Cliente vacío.
      */
-<span class="nc" id="L58">    public Cliente(){}</span>
+<span class="fc" id="L58">    public Cliente(){}</span>
 
     // Getters &amp; Setters
 <span class="nc" id="L61">    public int getId() {return id;}</span>
 <span class="nc" id="L62">    public void setId(int id) {this.id = id;}</span>
-<span class="nc" id="L63">    public String getNombre() {return nombre;}</span>
+<span class="fc" id="L63">    public String getNombre() {return nombre;}</span>
 <span class="nc" id="L64">    public void setNombre(String nombre) {this.nombre = nombre;}</span>
 <span class="nc" id="L65">    public String getEmail() {return email;}</span>
 <span class="nc" id="L66">    public void setEmail(String email) {this.email = email;}</span>
@@ -76,8 +76,8 @@ public class Cliente {
     // Métodos
     @Override
     public String toString(){
-<span class="nc" id="L79">        return &quot;{\&quot;id\&quot;:\&quot;%d\&quot;,\&quot;nombre\&quot;:\&quot;%s\&quot;,\&quot;direccion\&quot;:\&quot;%s\&quot;,\&quot;email\&quot;:\&quot;%s\&quot;,\&quot;annosAntiguedad\&quot;:\&quot;%d\&quot;,\&quot;esVip\&quot;:\&quot;%s\&quot;,\&quot;pais\&quot;:\&quot;%s\&quot;}&quot;.formatted(</span>
-<span class="nc" id="L80">            this.id, this.nombre, this.direccion, this.email, this.annosAntiguedad, this.esVip, this.pais</span>
+<span class="fc" id="L79">        return &quot;{\&quot;id\&quot;:\&quot;%d\&quot;,\&quot;nombre\&quot;:\&quot;%s\&quot;,\&quot;direccion\&quot;:\&quot;%s\&quot;,\&quot;email\&quot;:\&quot;%s\&quot;,\&quot;annosAntiguedad\&quot;:\&quot;%d\&quot;,\&quot;esVip\&quot;:\&quot;%s\&quot;,\&quot;pais\&quot;:\&quot;%s\&quot;}&quot;.formatted(</span>
+<span class="fc" id="L80">            this.id, this.nombre, this.direccion, this.email, this.annosAntiguedad, this.esVip, this.pais</span>
         );
     }
 }

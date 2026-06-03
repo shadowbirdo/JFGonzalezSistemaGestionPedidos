@@ -1,9 +1,5 @@
 package dev.jfgonzalez.gestpedidos;
 
-/**
- * - Atributos: id, nombre, precioBase.
- * - Validación Crítica: Si se intenta asignar un precio negativo, debe lanzar una excepción controlada (ej. IllegalArgumentException).
- */
 public class Producto {
     // Constantes
     public static final String NEGATIVE_PRICE_EXCEPTION_MESSAGE = "Attempt to assign negative int to basePrice. basePrice cannot be negative.";

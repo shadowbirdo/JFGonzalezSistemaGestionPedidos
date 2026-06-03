@@ -6,7 +6,7 @@
 
   <groupId>dev.jfgonzalez</groupId>
   <artifactId>gestpedidos</artifactId>
-  <version>4.9</version>
+  <version>4.10</version>
 
   <name>Sistema de Gestión de Pedidos</name>
   <url>http://www.example.com</url>
@@ -109,6 +109,27 @@
                 <file>${project.basedir}/.env</file>
               </files>
             </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- Plugin para javadoc -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.12.0</version>
+        <configuration>
+          <doclint>none</doclint>
+          <additionalOptions>
+              <additionalOption>--ignore-source-errors</additionalOption>
+          </additionalOptions>
+        </configuration>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
           </execution>
         </executions>
       </plugin>

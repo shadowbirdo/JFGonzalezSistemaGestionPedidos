@@ -33,7 +33,7 @@
 <span class="fc" id="L33">        }</span>
         
 <span class="fc" id="L35">        boolean soloDigitales = pedido.getProductos().stream().allMatch(ProductoDigital.class::isInstance);</span>
-<span class="pc bpc" id="L36" title="1 of 2 branches missed.">        double totalEnvio = soloDigitales ? 0 : pedido.calcularEnvio(cliente.getPais());</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">        double totalEnvio = soloDigitales ? 0 : pedido.calcularEnvio(cliente.getPais());</span>
 <span class="fc" id="L37">        boolean tieneFisicos = pedido.getProductos().stream().anyMatch(ProductoFisico.class::isInstance);</span>
 <span class="fc bfc" id="L38" title="All 2 branches covered.">        if (!tieneFisicos) {</span>
 <span class="fc" id="L39">            totalEnvio = 0;</span>

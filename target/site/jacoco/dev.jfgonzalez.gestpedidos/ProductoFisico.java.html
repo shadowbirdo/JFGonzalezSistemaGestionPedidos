@@ -29,8 +29,8 @@ public class ProductoFisico extends Producto{
      * @param precioBase - Precio base
      */
     public ProductoFisico(int id, String name, float price) {
-<span class="nc" id="L32">        this(id,name,price,0);</span>
-<span class="nc" id="L33">    }</span>
+<span class="fc" id="L32">        this(id,name,price,0);</span>
+<span class="fc" id="L33">    }</span>
 
     /**
      * Construye un ProductoFisico a partir de otro objeto del mismo tipo.
@@ -55,14 +55,14 @@ public class ProductoFisico extends Producto{
      * @param zonaDestino - País al que se envía el producto
      * @return Coste de envío
      */
-    public static double costeEnvio(String zonaDestino) {
-<span class="nc bnc" id="L59" title="All 3 branches missed.">        switch (zonaDestino.toLowerCase()) {</span>
+    public double costeEnvio(String zonaDestino) {
+<span class="fc bfc" id="L59" title="All 3 branches covered.">        switch (zonaDestino.toLowerCase()) {</span>
             case &quot;españa&quot;:
-<span class="nc" id="L61">                return ENVIO_NACIONAL;</span>
+<span class="fc" id="L61">                return ENVIO_NACIONAL;</span>
             case &quot;francia&quot;,&quot;italia&quot;,&quot;portugal&quot;:
-<span class="nc" id="L63">                return ENVIO_VECINO;</span>
+<span class="fc" id="L63">                return ENVIO_VECINO;</span>
             default:
-<span class="nc" id="L65">                return ENVIO_OTRO;</span>
+<span class="fc" id="L65">                return ENVIO_OTRO;</span>
         }
     }
 

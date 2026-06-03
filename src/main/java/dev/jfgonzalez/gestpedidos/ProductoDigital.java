@@ -1,8 +1,5 @@
 package dev.jfgonzalez.gestpedidos;
 
-/**
- * Debe implementar el método aplicarIVA(String tipoIva). Los tipos válidos son "GENERAL" (21%), "REDUCIDO" (10%) y "SUPER" (4%).
- */
 public class ProductoDigital extends Producto{
     // Constantes
     public static final String INVALID_IVA_EXCEPTION_MESSAGE = "IVA type not valid. Valid types are GENERAL, REDUCIDO and SUPER.";

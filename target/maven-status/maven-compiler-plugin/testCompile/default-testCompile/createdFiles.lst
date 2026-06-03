@@ -1,3 +1,6 @@
-dev/jfgonzalez/gestpedidos/PedidoTest.class
 dev/jfgonzalez/gestpedidos/MasterGroupTest.class
+dev/jfgonzalez/gestpedidos/FacturaTest.class
 dev/jfgonzalez/gestpedidos/ProductoTest.class
+dev/jfgonzalez/gestpedidos/PedidoTest.class
+dev/jfgonzalez/gestpedidos/TiendaTest.class
+dev/jfgonzalez/gestpedidos/SistemaIntegracionTest.class

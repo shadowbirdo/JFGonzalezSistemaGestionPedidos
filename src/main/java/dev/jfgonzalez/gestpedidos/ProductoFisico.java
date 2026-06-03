@@ -55,7 +55,7 @@ public class ProductoFisico extends Producto{
      * @param zonaDestino - País al que se envía el producto
      * @return Coste de envío
      */
-    public static double costeEnvio(String zonaDestino) {
+    public double costeEnvio(String zonaDestino) {
         switch (zonaDestino.toLowerCase()) {
             case "españa":
                 return ENVIO_NACIONAL;

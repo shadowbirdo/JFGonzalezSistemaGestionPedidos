@@ -4,31 +4,23 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.jupiter.api.Disabled;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@Disabled("Tests desactualizados")
 class ProductoTest {
     @Test
-    @DisplayName("CP-01: DigitalProd debe aplicar un 5% de descuento")
+    @DisplayName("CP-01: ProductoDigital debe aplicar el IVA correctamente")
     void testDigitalProdCalcPrice() {
-        ProductoDigital digitalProduct = new ProductoDigital(1,"test_product", 10, "test_license", 123, 0);
-        digitalProduct.aplicarIva("REDUCIDO");
+        ProductoDigital pd = new ProductoDigital(1,"test_product", 10);
+        pd.aplicarIva("REDUCIDO");
         
-        double finalPrice = digitalProduct.calcularPrecioFinal();
+        double precioConIva = pd.calcularPrecioFinal();
 
-        assertEquals(11f, finalPrice, "El precio con descuento debería ser 9.5f");
-    }
-
-    @Test
-    @DisplayName("CP-02: PhysicalProd debe sumar el coste de envío al precio base")
-    void testPhysicalProdCalcPrice() {
-        ProductoFisico physicalProduct = new ProductoFisico(1,"Detergente", 20.0f);
-
-        double finalPrice = physicalProduct.calcularPrecioFinal();
-
-        assertEquals(30.0f, finalPrice, "El precio total debería ser 30.0f (20.0f + 10.0f)");
+        assertEquals(11, precioConIva, "El precio con IVA debería ser 11");
     }
 
     @Test
@@ -44,16 +36,24 @@ class ProductoTest {
     @Test
     @DisplayName("CP-08: El precio de un producto digital NO equivale a su precio base")
     void testDigitalPriceNotEqualsBase() {
-        ProductoDigital digitalProduct = new ProductoDigital(1,"Video", 50.0f, "Lic", 10.0f, 0);
+        ProductoDigital digitalProduct = new ProductoDigital(1,"Video", 50.0f);
+
         double finalPrice = digitalProduct.calcularPrecioFinal();
+
         assertNotEquals(50.0f, finalPrice, "El precio final con descuento no debe ser igual al precio bruto");
     }
 
     @Test
-    @DisplayName("CP-09: El precio de un producto físico NO equivale a su precio base")
+    @DisplayName("CP-09: El precio de un pedido con productos físicos NO equivale la suma de sus precios base")
     void testPhysicalPriceNotEqualsBase() {
-        ProductoFisico physicalProduct = new ProductoFisico(1,"Detergente", 100.0f);
-        double finalPrice = physicalProduct.calcularPrecioFinal();
-        assertNotEquals(100.0f, finalPrice, "El precio final debe incluir el envío, no ser igual al base");
+        ProductoFisico pf = new ProductoFisico(1,"Detergente", 50, 10);
+        Map<Integer,Integer> cantidades = new HashMap<>();
+        cantidades.put(pf.getId(), 2);
+        Cliente cliente = new Cliente();
+        Pedido pedido = new Pedido(0, cliente, List.of(pf),cantidades);
+
+        double precioFinal = pedido.calcularTotal() + pedido.calcularEnvio(null);
+
+        assertNotEquals(pf.getPrecioBase() * 2, precioFinal, "El precio final debe incluir el envío, no ser igual al base");
     }
 }

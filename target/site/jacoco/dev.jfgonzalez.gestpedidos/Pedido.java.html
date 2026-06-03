@@ -62,8 +62,7 @@ public class Pedido {
      */
     public Pedido(int id, Cliente cliente, List&lt;Producto&gt; productos, Map&lt;Integer,Integer&gt; cantidades){
 <span class="fc" id="L64">        this(id, cliente, &quot;PENDIENTE&quot;, productos, cantidades);</span>
-
-<span class="fc" id="L66">    }</span>
+<span class="fc" id="L65">    }</span>
 
     /**
      * Construye un Pedido con los parámetros indicados. &quot;estado&quot; es &quot;PENDIENTE&quot; y tanto productos como cantidades son objetos vacíos del tipo correspondiente.
@@ -71,18 +70,18 @@ public class Pedido {
      * @param cliente - Cliente al que se le asigna el Pedido
      */
     public Pedido(int id, Cliente cliente){
-<span class="fc" id="L74">        this(id, cliente, &quot;PENDIENTE&quot;, new ArrayList&lt;&gt;(), new HashMap&lt;&gt;());</span>
-<span class="fc" id="L75">    }</span>
+<span class="fc" id="L73">        this(id, cliente, &quot;PENDIENTE&quot;, new ArrayList&lt;&gt;(), new HashMap&lt;&gt;());</span>
+<span class="fc" id="L74">    }</span>
 
     // Getters &amp; Setters
-<span class="fc" id="L78">    public int getIdPedido() {return idPedido;}</span>
-<span class="nc" id="L79">    public void setIdPedido(int idPedido) {this.idPedido = idPedido;}</span>
-<span class="fc" id="L80">    public Cliente getCliente() {return cliente;}</span>
-<span class="nc" id="L81">    public void setCliente(Cliente customer) {this.cliente = customer;}</span>
-<span class="fc" id="L82">    public List&lt;Producto&gt; getProductos() {return new ArrayList&lt;&gt;(productos);}</span>
-<span class="nc" id="L83">    public void setProductos(List&lt;Producto&gt; productos) {this.productos = new ArrayList&lt;&gt;(productos);}</span>
-<span class="fc" id="L84">    public Map&lt;Integer,Integer&gt; getCantidades() {return new HashMap&lt;&gt;(cantidades);}</span>
-<span class="nc" id="L85">    public void setCantidades(Map&lt;Integer, Integer&gt; cantidades) {this.cantidades = new HashMap&lt;&gt;(cantidades);}</span>
+<span class="fc" id="L77">    public int getIdPedido() {return idPedido;}</span>
+<span class="fc" id="L78">    public void setIdPedido(int idPedido) {this.idPedido = idPedido;}</span>
+<span class="fc" id="L79">    public Cliente getCliente() {return cliente;}</span>
+<span class="fc" id="L80">    public void setCliente(Cliente customer) {this.cliente = customer;}</span>
+<span class="fc" id="L81">    public List&lt;Producto&gt; getProductos() {return new ArrayList&lt;&gt;(productos);}</span>
+<span class="fc bfc" id="L82" title="All 2 branches covered.">    public void setProductos(List&lt;Producto&gt; productos) {this.productos = productos != null ? new ArrayList&lt;&gt;(productos) : new ArrayList&lt;&gt;();}</span>
+<span class="fc" id="L83">    public Map&lt;Integer,Integer&gt; getCantidades() {return new HashMap&lt;&gt;(cantidades);}</span>
+<span class="fc bfc" id="L84" title="All 2 branches covered.">    public void setCantidades(Map&lt;Integer, Integer&gt; cantidades) {this.cantidades = cantidades != null ? new HashMap&lt;&gt;(cantidades) : new HashMap&lt;&gt;();}</span>
 
     // Métodos
     /**
@@ -91,31 +90,31 @@ public class Pedido {
      * @param cantidad - El número de productos a añadir, registrado en el mapa &quot;cantidades&quot;
      */
     public void addProducto(Producto producto, int cantidad){
-<span class="fc bfc" id="L94" title="All 3 branches covered.">        switch (producto) {</span>
-<span class="fc" id="L95">            case ProductoDigital pd -&gt; this.productos.add(new ProductoDigital(pd));</span>
-<span class="fc" id="L96">            case ProductoFisico pf -&gt; this.productos.add(new ProductoFisico(pf));</span>
-<span class="fc" id="L97">            case null, default -&gt; this.productos.add(new Producto(producto));</span>
+<span class="fc bfc" id="L93" title="All 3 branches covered.">        switch (producto) {</span>
+<span class="fc" id="L94">            case ProductoDigital pd -&gt; this.productos.add(new ProductoDigital(pd));</span>
+<span class="fc" id="L95">            case ProductoFisico pf -&gt; this.productos.add(new ProductoFisico(pf));</span>
+<span class="fc" id="L96">            case null, default -&gt; this.productos.add(new Producto(producto));</span>
         }
-<span class="fc" id="L99">        this.cantidades.put(producto.getId(),cantidad);</span>
-<span class="fc" id="L100">    }</span>
+<span class="fc" id="L98">        this.cantidades.put(producto.getId(),cantidad);</span>
+<span class="fc" id="L99">    }</span>
 
     /**
      * Incluye una unidad de un producto al pedido.
      * @param producto - El producto a añadir a la lista &quot;productos&quot;.
      */
     public void addProducto(Producto producto){
-<span class="nc" id="L107">        this.addProducto(producto,1);</span>
-<span class="nc" id="L108">    }</span>
+<span class="fc" id="L106">        this.addProducto(producto,1);</span>
+<span class="fc" id="L107">    }</span>
 
     /**
      * Elimina un producto de la lista productos según su id.
      * @param id - Identificador único
      */
-    public void delProduct(int id){
-<span class="nc bnc" id="L115" title="All 6 branches missed.">        if (productos.stream().noneMatch(p -&gt; p.getId() == id) || !cantidades.containsKey(id)) throw new IllegalArgumentException();</span>
-<span class="nc bnc" id="L116" title="All 2 branches missed.">        this.productos.removeIf(p -&gt; p.getId() == id);</span>
-<span class="nc" id="L117">        this.cantidades.remove(id);</span>
-<span class="nc" id="L118">    }</span>
+    public void delProducto(int id){
+<span class="pc bpc" id="L114" title="2 of 6 branches missed.">        if (productos.stream().noneMatch(p -&gt; p.getId() == id) || !cantidades.containsKey(id)) throw new IllegalArgumentException();</span>
+<span class="pc bpc" id="L115" title="1 of 2 branches missed.">        this.productos.removeIf(p -&gt; p.getId() == id);</span>
+<span class="fc" id="L116">        this.cantidades.remove(id);</span>
+<span class="fc" id="L117">    }</span>
 
     /**
      * Calcula el total del pedido teniendo en cuenta IVA y gastos de envío.
@@ -123,15 +122,15 @@ public class Pedido {
      * @throws IllegalStateException La lista de productos no puede estar vacía.
      */
     public double calcularTotal() throws IllegalStateException{
-<span class="pc bpc" id="L126" title="1 of 2 branches missed.">        if (productos.isEmpty()) throw new IllegalArgumentException(PRODUCT_LIST_EMPTY_EXCEPTION_MESSAGE);</span>
+<span class="fc bfc" id="L125" title="All 2 branches covered.">        if (productos.isEmpty()) throw new IllegalArgumentException(PRODUCT_LIST_EMPTY_EXCEPTION_MESSAGE);</span>
         
-<span class="fc" id="L128">        double total = 0;</span>
+<span class="fc" id="L127">        double total = 0;</span>
 
-<span class="fc bfc" id="L130" title="All 2 branches covered.">        for(Producto p : this.productos) {</span>
-<span class="fc" id="L131">            total += p.getPrecioBase() * cantidades.getOrDefault(p.getId(),1);</span>
-<span class="fc" id="L132">        }</span>
+<span class="fc bfc" id="L129" title="All 2 branches covered.">        for(Producto p : this.productos) {</span>
+<span class="fc" id="L130">            total += p.getPrecioBase() * cantidades.getOrDefault(p.getId(),1);</span>
+<span class="fc" id="L131">        }</span>
 
-<span class="fc" id="L134">        return total;</span>
+<span class="fc" id="L133">        return total;</span>
     }
 
     /**
@@ -140,23 +139,21 @@ public class Pedido {
      * @return Gastos de envío del pedido
      */
     public double calcularEnvio(String pais) {
-<span class="fc bfc" id="L143" title="All 2 branches covered.">        if (this.productos.stream().allMatch(ProductoDigital.class::isInstance)) return 0;</span>
-<span class="fc" id="L144">        double envio = this.productos.stream()</span>
-<span class="fc" id="L145">            .filter(ProductoFisico.class::isInstance)</span>
-<span class="fc" id="L146">            .map(p -&gt; (ProductoFisico)p)</span>
-<span class="fc" id="L147">            .mapToDouble(p -&gt;</span>
-<span class="fc" id="L148">                p.getPeso() * PRECIO_POR_KILO * cantidades.getOrDefault(p.getId(),1)</span>
+<span class="fc bfc" id="L142" title="All 2 branches covered.">        if (this.productos.stream().allMatch(ProductoDigital.class::isInstance)) return 0;</span>
+<span class="fc" id="L143">        double envio = this.productos.stream()</span>
+<span class="fc" id="L144">            .filter(ProductoFisico.class::isInstance)</span>
+<span class="fc" id="L145">            .map(p -&gt; (ProductoFisico)p)</span>
+<span class="fc" id="L146">            .mapToDouble(p -&gt;</span>
+<span class="fc" id="L147">                p.getPeso() * PRECIO_POR_KILO * cantidades.getOrDefault(p.getId(),1)</span>
             )
-<span class="fc" id="L150">            .sum();</span>
+<span class="fc" id="L149">            .sum();</span>
 
-<span class="pc bpc" id="L152" title="1 of 3 branches missed.">        switch (pais.toLowerCase()) {</span>
-            case &quot;españa&quot;:
-<span class="fc" id="L154">                return envio + 0;</span>
-            case &quot;francia&quot;,&quot;italia&quot;,&quot;portugal&quot;:
-<span class="fc" id="L156">                return envio + 5;</span>
-            default:
-<span class="nc" id="L158">                return envio + 10;</span>
-        }
+<span class="fc bfc" id="L151" title="All 5 branches covered.">        return switch (pais == null ? null : pais.toLowerCase()) {</span>
+<span class="fc" id="L152">            case &quot;españa&quot; -&gt; envio + 0;</span>
+<span class="fc" id="L153">            case &quot;francia&quot;, &quot;italia&quot;, &quot;portugal&quot; -&gt; envio + 5;</span>
+<span class="fc" id="L154">            case null, default -&gt; envio + 10;</span>
+        };
+
     }
 
     /**
@@ -165,26 +162,26 @@ public class Pedido {
      * @return IVA total del pedido
      */
     public double calcularIva(String tipoIva){
-<span class="fc" id="L168">        return this.productos.stream()</span>
-<span class="fc" id="L169">            .filter(ProductoDigital.class::isInstance)</span>
-<span class="fc" id="L170">            .mapToDouble(p -&gt; {</span>
-<span class="fc" id="L171">                ProductoDigital pd = (ProductoDigital) p;</span>
-<span class="fc" id="L172">                pd.aplicarIva(tipoIva);</span>
-<span class="fc" id="L173">                double ivaUd = pd.getPrecioBase() * pd.getIva();</span>
-<span class="fc" id="L174">                int cantidad = this.cantidades.getOrDefault(pd.getId(), 1);</span>
-<span class="fc" id="L175">                return ivaUd * cantidad;</span>
+<span class="fc" id="L165">        return this.productos.stream()</span>
+<span class="fc" id="L166">            .filter(ProductoDigital.class::isInstance)</span>
+<span class="fc" id="L167">            .mapToDouble(p -&gt; {</span>
+<span class="fc" id="L168">                ProductoDigital pd = (ProductoDigital) p;</span>
+<span class="fc" id="L169">                pd.aplicarIva(tipoIva);</span>
+<span class="fc" id="L170">                double ivaUd = pd.getPrecioBase() * pd.getIva();</span>
+<span class="fc" id="L171">                int cantidad = this.cantidades.getOrDefault(pd.getId(), 1);</span>
+<span class="fc" id="L172">                return ivaUd * cantidad;</span>
             })
-<span class="fc" id="L177">            .sum();</span>
+<span class="fc" id="L174">            .sum();</span>
     }
     
     @Override
     public String toString() {
-<span class="nc" id="L182">        return &quot;{\&quot;idPedido\&quot;:\&quot;%d\&quot;,\&quot;cliente\&quot;:%s,\&quot;estado\&quot;:\&quot;%s\&quot;,\&quot;productos\&quot;:\&quot;%s\&quot;,\&quot;cantidades\&quot;:\&quot;%s\&quot;}&quot;.formatted(</span>
-<span class="nc" id="L183">            this.idPedido, </span>
-<span class="nc bnc" id="L184" title="All 2 branches missed.">            this.cliente != null ? this.cliente.toString() : &quot;null&quot;, </span>
+<span class="fc" id="L179">        return &quot;{\&quot;idPedido\&quot;:\&quot;%d\&quot;,\&quot;cliente\&quot;:%s,\&quot;estado\&quot;:\&quot;%s\&quot;,\&quot;productos\&quot;:\&quot;%s\&quot;,\&quot;cantidades\&quot;:\&quot;%s\&quot;}&quot;.formatted(</span>
+<span class="fc" id="L180">            this.idPedido, </span>
+<span class="pc bpc" id="L181" title="1 of 2 branches missed.">            this.cliente != null ? this.cliente.toString() : &quot;null&quot;, </span>
             this.estado, 
-<span class="nc" id="L186">            this.productosToString(), </span>
-<span class="nc" id="L187">            this.cantidadesToString()</span>
+<span class="fc" id="L183">            this.productosToString(), </span>
+<span class="fc" id="L184">            this.cantidadesToString()</span>
         );
     }
 
@@ -193,11 +190,11 @@ public class Pedido {
      * @return Lista de productos en formato JSON
      */
     public String productosToString() {
-<span class="nc bnc" id="L196" title="All 2 branches missed.">        if (this.productos == null) return &quot;null&quot;;</span>
-<span class="nc" id="L197">        return &quot;{%s}&quot;.formatted(</span>
-<span class="nc" id="L198">            this.productos.stream()</span>
-<span class="nc bnc" id="L199" title="All 2 branches missed.">                .map(p -&gt; p != null ? p.toString() : &quot;null&quot;)</span>
-<span class="nc" id="L200">                .collect(Collectors.joining(&quot;,&quot;))</span>
+<span class="pc bpc" id="L193" title="1 of 2 branches missed.">        if (this.productos == null) return &quot;null&quot;;</span>
+<span class="fc" id="L194">        return &quot;{%s}&quot;.formatted(</span>
+<span class="fc" id="L195">            this.productos.stream()</span>
+<span class="pc bnc" id="L196" title="All 2 branches missed.">                .map(p -&gt; p != null ? p.toString() : &quot;null&quot;)</span>
+<span class="fc" id="L197">                .collect(Collectors.joining(&quot;,&quot;))</span>
         );
     }
 
@@ -206,10 +203,10 @@ public class Pedido {
      * @return Mapa de cantidades en formato JSON
      */
     public String cantidadesToString() {
-<span class="nc bnc" id="L209" title="All 2 branches missed.">        return this.cantidades == null ? &quot;&quot; : &quot;{%s}&quot;.formatted(</span>
-<span class="nc" id="L210">            this.cantidades.entrySet().stream()</span>
-<span class="nc" id="L211">                .map(entry -&gt; &quot;\&quot;%d\&quot;:%d&quot;.formatted(entry.getKey(), entry.getValue()))</span>
-<span class="nc" id="L212">                .collect(Collectors.joining(&quot;,&quot;))</span>
+<span class="pc bpc" id="L206" title="1 of 2 branches missed.">        return this.cantidades == null ? &quot;&quot; : &quot;{%s}&quot;.formatted(</span>
+<span class="fc" id="L207">            this.cantidades.entrySet().stream()</span>
+<span class="pc" id="L208">                .map(entry -&gt; &quot;\&quot;%d\&quot;:%d&quot;.formatted(entry.getKey(), entry.getValue()))</span>
+<span class="fc" id="L209">                .collect(Collectors.joining(&quot;,&quot;))</span>
         );
     }
 }

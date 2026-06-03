@@ -1,0 +1,56 @@
+-J-Duser.language=
+-J-Duser.country=
+@options
+@packages
+--no-fonts
+-classpath
+'/home/shadow_birdo/.m2/repository/com/jakewharton/picnic/picnic-jvm/0.7.0/picnic-jvm-0.7.0.jar:/home/shadow_birdo/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-jdk8/1.9.10/kotlin-stdlib-jdk8-1.9.10.jar:/home/shadow_birdo/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib/1.9.10/kotlin-stdlib-1.9.10.jar:/home/shadow_birdo/.m2/repository/org/jetbrains/annotations/13.0/annotations-13.0.jar:/home/shadow_birdo/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-jdk7/1.9.10/kotlin-stdlib-jdk7-1.9.10.jar:/home/shadow_birdo/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-common/1.9.10/kotlin-stdlib-common-1.9.10.jar:/home/shadow_birdo/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.21.3/jackson-databind-2.21.3.jar:/home/shadow_birdo/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.21/jackson-annotations-2.21.jar:/home/shadow_birdo/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.21.3/jackson-core-2.21.3.jar'
+-encoding
+'UTF-8'
+-protected
+--release
+21
+-sourcepath
+'/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/src/main/java'
+--ignore-source-errors
+-author
+-bottom
+'Copyright &#169; 2026. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/target/reports/apidocs'
+-docencoding
+'UTF-8'
+-Xdoclint:none
+-doctitle
+'Sistema de Gestión de Pedidos 4.10 API'
+-use
+-version
+-windowtitle
+'Sistema de Gestión de Pedidos 4.10 API'
+dev.jfgonzalez.gestpedidos
+/home/shadow_birdo/.m2/repository/com/jakewharton/picnic/picnic-jvm/0.7.0/picnic-jvm-0.7.0.jar = 1693413457000
+/home/shadow_birdo/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-jdk8/1.9.10/kotlin-stdlib-jdk8-1.9.10.jar = 1692782432000
+/home/shadow_birdo/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib/1.9.10/kotlin-stdlib-1.9.10.jar = 1692782427000
+/home/shadow_birdo/.m2/repository/org/jetbrains/annotations/13.0/annotations-13.0.jar = 1387282242000
+/home/shadow_birdo/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-jdk7/1.9.10/kotlin-stdlib-jdk7-1.9.10.jar = 1692782429000
+/home/shadow_birdo/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-common/1.9.10/kotlin-stdlib-common-1.9.10.jar = 1692781294000
+/home/shadow_birdo/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.21.3/jackson-databind-2.21.3.jar = 1777406931000
+/home/shadow_birdo/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.21/jackson-annotations-2.21.jar = 1768776434000
+/home/shadow_birdo/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.21.3/jackson-core-2.21.3.jar = 1777406384000
+/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/src/main/java = 1779814127134
+/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/target/reports/apidocs/tag-search-index.js = 1780520327402
+/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/target/reports/apidocs/allpackages-index.html = 1780520327402
+/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/target/reports/apidocs/type-search-index.js = 1780520327402
+/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/target/reports/apidocs/member-search-index.js = 1780520327402
+/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/target/reports/apidocs/element-list = 1780520327362
+/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/target/reports/apidocs/module-search-index.js = 1780520327402
+/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/target/reports/apidocs/index-all.html = 1780520327410
+/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/target/reports/apidocs/help-doc.html = 1780520327414
+/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/target/reports/apidocs/overview-tree.html = 1780520327394
+/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/target/reports/apidocs/package-search-index.js = 1780520327402
+/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/target/reports/apidocs/search.html = 1780520327410
+/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/target/reports/apidocs/constant-values.html = 1780520327370
+/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/target/reports/apidocs/allclasses-index.html = 1780520327398
+/home/shadow_birdo/1_Projects/_EnDes_SistemaGestionFinal/JFGonzalezSistemaGestionPedidos/target/reports/apidocs/index.html = 1780520327410
