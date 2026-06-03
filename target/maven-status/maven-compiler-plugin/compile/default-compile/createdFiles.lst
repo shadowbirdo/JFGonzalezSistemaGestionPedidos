@@ -2,7 +2,6 @@ dev/jfgonzalez/gestpedidos/model/Cliente.class
 dev/jfgonzalez/gestpedidos/util/TableBuilder.class
 dev/jfgonzalez/gestpedidos/exceptions/Msg.class
 dev/jfgonzalez/gestpedidos/service/Tienda.class
-dev/jfgonzalez/gestpedidos/Main.class
 dev/jfgonzalez/gestpedidos/model/ProductoFisico.class
 dev/jfgonzalez/gestpedidos/model/ProductoDigital.class
 dev/jfgonzalez/gestpedidos/model/Pedido.class

@@ -1,31 +1,31 @@
 -------------------------------------------------------------------------------
-Test set: dev.jfgonzalez.gestpedidos.OrderTest
+Test set: dev.jfgonzalez.gestpedidos.PedidoTest
 -------------------------------------------------------------------------------
-Tests run: 9, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0.224 s <<< FAILURE! -- in dev.jfgonzalez.gestpedidos.OrderTest
-dev.jfgonzalez.gestpedidos.OrderTest.testCalcTotalParameterized(float, float, float)[1] -- Time elapsed: 0.013 s <<< FAILURE!
-org.opentest4j.AssertionFailedError: El total calculado no coincide con el esperado ==> expected: <14.75> but was: <21.0>
+Tests run: 8, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0.104 s <<< FAILURE! -- in dev.jfgonzalez.gestpedidos.PedidoTest
+dev.jfgonzalez.gestpedidos.PedidoTest.testCalcTotalParameterized(float, float, float)[1] -- Time elapsed: 0.013 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: El total calculado no coincide con el esperado ==> expected: <14.75> but was: <15.0>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:158)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:139)
 	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:201)
 	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:72)
 	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:964)
-	at dev.jfgonzalez.gestpedidos.OrderTest.testCalcTotalParameterized(OrderTest.java:30)
+	at dev.jfgonzalez.gestpedidos.PedidoTest.testCalcTotalParameterized(PedidoTest.java:30)
 
-dev.jfgonzalez.gestpedidos.OrderTest.testCalcTotalParameterized(float, float, float)[2] -- Time elapsed: 0.002 s <<< FAILURE!
-org.opentest4j.AssertionFailedError: El total calculado no coincide con el esperado ==> expected: <24.75> but was: <31.0>
+dev.jfgonzalez.gestpedidos.PedidoTest.testCalcTotalParameterized(float, float, float)[2] -- Time elapsed: 0.001 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: El total calculado no coincide con el esperado ==> expected: <24.75> but was: <25.0>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:158)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:139)
 	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:201)
 	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:72)
 	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:964)
-	at dev.jfgonzalez.gestpedidos.OrderTest.testCalcTotalParameterized(OrderTest.java:30)
+	at dev.jfgonzalez.gestpedidos.PedidoTest.testCalcTotalParameterized(PedidoTest.java:30)
 
-dev.jfgonzalez.gestpedidos.OrderTest.testCalcTotalParameterized(float, float, float)[3] -- Time elapsed: 0.001 s <<< FAILURE!
-org.opentest4j.AssertionFailedError: El total calculado no coincide con el esperado ==> expected: <48.75> but was: <36.0>
+dev.jfgonzalez.gestpedidos.PedidoTest.testCalcTotalParameterized(float, float, float)[3] -- Time elapsed: 0.001 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: El total calculado no coincide con el esperado ==> expected: <48.75> but was: <50.0>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:158)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:139)
 	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:201)
 	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:72)
 	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:964)
-	at dev.jfgonzalez.gestpedidos.OrderTest.testCalcTotalParameterized(OrderTest.java:30)
+	at dev.jfgonzalez.gestpedidos.PedidoTest.testCalcTotalParameterized(PedidoTest.java:30)
 

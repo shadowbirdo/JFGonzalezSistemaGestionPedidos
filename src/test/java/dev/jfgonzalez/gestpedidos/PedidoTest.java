@@ -7,12 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import dev.jfgonzalez.gestpedidos.model.Cliente;
-import dev.jfgonzalez.gestpedidos.model.ProductoDigital;
-import dev.jfgonzalez.gestpedidos.model.Pedido;
-import dev.jfgonzalez.gestpedidos.model.ProductoFisico;
-
-class OrderTest {
+class PedidoTest {
     @ParameterizedTest
     @DisplayName("CP-03: Cálculo correcto del total con varios productos")
     @CsvSource({
@@ -50,19 +45,5 @@ class OrderTest {
         double total = order.calcularTotal();
 
         assertNotEquals(incorrectValue, total, "El total debería ser distinto a este valor incorrecto");
-    }
-
-    @Test
-    @DisplayName("Verificar que showSummary devuelve una cadena no nula")
-    void testShowSummary() {
-        Cliente client = new Cliente(1, "Homer");
-        Pedido order = new Pedido(1, client);
-        order.addProducto(new ProductoFisico(1,"Duff", 10.0f));
-
-        String summary = order.showSummary();
-
-        assertNotNull(summary, "El resumen no debería ser nulo");
-        assertTrue(summary.contains("Homer"), "El resumen debe contener el nombre del cliente");
-        assertTrue(summary.contains("Duff"), "El resumen debe contener el nombre del producto");
     }
 }

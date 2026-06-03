@@ -15,9 +15,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import dev.jfgonzalez.gestpedidos.model.*;
-import dev.jfgonzalez.gestpedidos.service.*;
-
 public class MasterGroupTest {
 
 	@DisplayName("La venta genera metadatos basicos de factura")
